@@ -5,7 +5,7 @@ interface FeaturedProductProps {
     discount: number
 }
 
-const FeaturedProduct = ({ imageUrl, name, normalPrice, discount } : FeaturedProductProps) => {
+const FeaturedProduct = ({} : FeaturedProductProps) => {
     return <></>
 }
 

@@ -2,7 +2,7 @@ interface BreadcrumbProps {
     pages: string[]
 }
 
-const Breadcrumb = ({ pages } : BreadcrumbProps) => {
+const Breadcrumb = ({} : BreadcrumbProps) => {
     return <></>
 }
 

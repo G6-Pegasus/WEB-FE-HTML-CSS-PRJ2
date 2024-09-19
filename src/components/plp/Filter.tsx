@@ -8,7 +8,7 @@ interface FilterProps {
     items: Item[]
 }
 
-const Filter = ({ name, items } : FilterProps) => {
+const Filter = ({} : FilterProps) => {
     return <></>
 }
 

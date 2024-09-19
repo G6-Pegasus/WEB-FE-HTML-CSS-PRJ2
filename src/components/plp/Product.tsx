@@ -8,7 +8,7 @@ interface ProductProps {
     discount: number
 }
 
-const Product = ({ imageUrl, name, brand, starts, reviews, price, discount } : ProductProps) => {
+const Product = ({} : ProductProps) => {
     return <></>
 }
 

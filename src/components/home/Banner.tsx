@@ -2,7 +2,7 @@ interface BannerProps {
     imageUrl: string
 }
 
-const Banner = ({ imageUrl } : BannerProps) => {
+const Banner = ({} : BannerProps) => {
     return <></>
 }
 
