@@ -11,7 +11,7 @@ const router = createBrowserRouter([
     element: <Home />,
   },
   {
-    path: "/plp",
+    path: "/:category/:subCategory?",
     element: <Plp />,
   }
 ], { basename: "/WEB-FE-HTML-CSS-PRJ2" });
