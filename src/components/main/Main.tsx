@@ -10,7 +10,7 @@ interface MainProps {
 const Main = ({ breadcrumbPages, children } : MainProps) => {
     return <>
         <Header />
-        <main className='bg-red-400'>
+        <main className='bg-[#ffffff]'>
             <Breadcrumb pages={breadcrumbPages} />
             {children}
         </main>
