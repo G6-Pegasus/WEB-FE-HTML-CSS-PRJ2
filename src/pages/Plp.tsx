@@ -1,9 +1,24 @@
-import { Link } from "react-router-dom"
+import { Link, Location, useLocation } from "react-router-dom"
 import Main from "../components/main/Main"
 import Product from "../components/plp/Product"
+import { useState, useEffect } from "react"
+import { get_plp_data } from "../utils/plp/plp_data"
+import * as Interfaces from '../utils/plp/interfaces'
 
 const Plp = () => {
-    const products = [...Array(5)]
+    const location: Location = useLocation();
+    const [products, setProducts] = useState<Interfaces.Product[]>([])
+    const [filters, setFilters] = useState<Interfaces.Filter[]>([])
+
+    useEffect(() => {
+        const getData = async () => {
+            const [category, subCategory] = location.pathname.split("/").slice(1)
+            const { data_plp_products, data_plp_filters } = await get_plp_data(category, subCategory)
+            setProducts(data_plp_products)
+            setFilters(data_plp_filters)
+        }
+        getData()
+    }, [location])
 
     return <Main>
         <section className="flex flex-col md:flex-row sm:mx-5 mx-2 sm:mb-5 mb-2 gap-5">
@@ -28,14 +43,19 @@ const Plp = () => {
 
                 {/* --------------------- LIST OF PRODUCTS ---------------------- */}
                 <section className="grid gap-4">
-                    {products.map((_, index) => <Link key={index} className="Block" to={"/"}>
-                        <Product 
-                            imageUrl="https://g6-pegasus.github.io/WEB-FE-HTML-CSS-PRJ1/img/aire1-plp.PNG" 
-                            name="Aire Acondicionado" 
-                            brand="M/Split - Olimpo - Inverter 12000 BTU 110V Clase D." 
-                            starts={4} reviews={48} 
-                            price={2499000} discount={0.5} />
-                    </Link>)}
+                    {products.map((product, index) => {
+                        const { id, imageUrl, name, brand, category, subCategory, starts, reviews, price, discount } = product
+                        const url = `/${category}/${subCategory}/${id}`
+
+                        return <Link key={index} className="Block" to={url}>
+                            <Product 
+                                imageUrl={imageUrl}
+                                name={name}
+                                brand={brand}
+                                starts={starts} reviews={reviews} 
+                                price={price} discount={discount} />
+                        </Link>
+                    })}
                 </section>
 
             </section>
