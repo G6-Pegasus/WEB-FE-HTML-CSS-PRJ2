@@ -12,7 +12,7 @@ interface FilterProps {
 
 const Filter: React.FC<FilterProps> = ({ name, items }) => {
   return (
-    <div className="mb-2">
+    <div className="mb-2 ">
       <b className="block text-white font-semibold mb-1">{name}</b>
       {items.map((item) => (
         <label key={item.name} className="block text-white">

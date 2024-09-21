@@ -1,5 +1,5 @@
-import Home from './pages/Home'
-import Plp from './pages/Plp'
+import Home from './pages/Home';
+import Plp from './pages/Plp';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -11,11 +11,11 @@ const router = createBrowserRouter([
     element: <Home />,
   },
   {
-    path: "/plp",
+    path: "/:category/:subCategory?",
     element: <Plp />,
   }
 ], { basename: "/WEB-FE-HTML-CSS-PRJ2" });
 
 const App = () => <RouterProvider router={router} />
 
-export default App
+export default App;

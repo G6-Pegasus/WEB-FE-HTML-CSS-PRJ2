@@ -1,9 +1,12 @@
-import Main from "../components/main/Main"
+import React from "react";
+import Main from "../components/main/Main";
 
 const Home = () => {
-    return <Main breadcrumbPages={[]}>
-        Content
+  return (
+    <Main breadcrumbPages={[]}>
+      Content
     </Main>
-}
+  );
+};
 
-export default Home
+export default Home;

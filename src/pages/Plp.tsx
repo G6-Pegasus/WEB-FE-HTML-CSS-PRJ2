@@ -1,22 +1,42 @@
-import React, {useState, useEffect} from 'react';
-import Filter from '../components/plp/Filter';
-import {data_plp_filters} from '../utils/plp/appliance/cooling';
+import React, { useState, useEffect } from "react";
+import { useParams  } from "react-router-dom";
+import Filter from "../components/plp/Filter";
+import SubHeader from "../components/main/SubHeader";
+import {get_plp_data} from "../utils/plp/plp_data";
+import * as interfaces from "../utils/plp/interfaces";
+
+type Params = {
+  category: interfaces.Subcategories;
+  subCategory: interfaces.Subcategories;
+}
 
 const Plp = () => {
-  const [filters, setFilters] = useState<Array<{ name: string; items: Array<{ name: string; quantity: number }> }>>([]);
+  const { category="", subCategory=""} =  useParams<Params>();
+  const [filters, setFilters] = useState<interfaces.Filter[]>([]);
 
   useEffect(() => {
-    setFilters(data_plp_filters);
-  }, []);
+    const getFilters = () => {
+      get_plp_data(subCategory ?? category).then((data:interfaces.data_plp) => {
+        setFilters(data.data_plp_filters);
+      })
+    }
+    getFilters();
+  }, [subCategory]);
 
   return (
-    <aside className="inline-block ml-2 p-4 bg-[#211f43] col-span-1 row-start-2 row-end-4 rounded-lg h-max m-3">
-      <h3 className="text-white font-bold  mb-2 text-lg">Filtrar por</h3>
-      {filters.map((filter) => (
-        <Filter key={filter.name} name={filter.name} items={filter.items} />
-      ))}
-      <button className="mt-2 p-2 bg-[#dcdce0] text-[#211f43] rounded hover:bg-[#aeaebe8a] hover:text-white">Aplicar</button>
-    </aside>
+    <div>
+      <SubHeader />
+      <aside className="inline-block ml-2 p-4 bg-[#211f43] rounded-lg h-max">
+        <h3 className="text-white font-semibold mb-4">Filtrar por</h3>
+        {filters.length > 0 ? (
+          filters.map((filter) => (
+            <Filter key={filter.name} name={filter.name} items={filter.items} />
+          ))
+        ) : (
+          <p className="text-white">Selecciona una subcategoría para ver filtros</p>
+        )}
+      </aside>
+    </div>
   );
 };
 

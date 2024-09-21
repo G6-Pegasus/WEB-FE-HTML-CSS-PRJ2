@@ -18,3 +18,4 @@ export const data_plp_filters = [
     },
     
 ];
+
