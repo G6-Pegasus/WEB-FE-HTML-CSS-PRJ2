@@ -16,6 +16,6 @@ export const featuredProducts: FeaturedProductProps[] = [
     { imageUrl: "https://olimpica.vtexassets.com/arquivos/ids/857192/image-918cdb9a6ba940a99f1a8459e3bd5017.jpg?v=637897777814000000", name: "Celular IPhone 11 Reacondicionado 64 GB", normalPrice: 39999000, discount: 72 },
     { imageUrl: "https://olimpica.vtexassets.com/arquivos/ids/193792/Estufa-a-gas-natural-ABBA-AT-101-5N-N----Horno.jpg?v=637074444279000000", name: "Estufa de Piso Abba Gas Natural 4 Puestos Negro AT 101-5N N", normalPrice: 734900, discount: 15 },
     { imageUrl: "https://olimpica.vtexassets.com/arquivos/ids/746568/Licuadora-IMUSA-Powemix-Glass-5-Velocidades-Vinotinto.jpg?v=637792343091430000", name: "Licuadora Imusa Power Mix Glass 1,25 Lt Vaso Vidrio 5 Velocidades", normalPrice: 140900, discount: 18 },
-    { imageUrl: "https://olimpica.vtexassets.com/arquivos/ids/469322/Aire-acondicionado-OLIMPO-12000BTU-220V-ON-OFF.jpg?v=637478086071370000", name: "Aire Acondicionado Olimpo Mini Split ON/OFF 12000 BTU 220 Voltios OLACB12-220MIC", normalPrice: 1799000, discount: 20 },
+    { imageUrl: "https://olimpica.vtexassets.com/arquivos/ids/469322/Aire-acondicionado-OLIMPO-12000BTU-220V-ON-OFF.jpg?v=637478086071370000", name: "Aire Acondicionado Olimpo Mini Split ON/OFF 12000 BTU 220 Voltios OLACB12", normalPrice: 1799000, discount: 20 },
     { imageUrl: "https://olimpica.vtexassets.com/arquivos/ids/1293356/7704353453607_001.jpg?v=638418990973470000", name: "Lavadora Haceb 7 Kg Carga Superior Semiautomática Blanca Lsa07Evi16B-Cc1I", normalPrice: 888900, discount: 20 }
 ]
