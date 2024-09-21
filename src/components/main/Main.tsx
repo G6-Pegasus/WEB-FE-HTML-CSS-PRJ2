@@ -1,6 +1,7 @@
 import Header from "./Header"
 import Breadcrumb from './Breadcrumb'
 import Footer from "./Footer"
+import BannerImage from '../home/Banner';
 
 interface MainProps {
     breadcrumbPages: string[],
@@ -14,6 +15,7 @@ const Main = ({ breadcrumbPages, children } : MainProps) => {
             <Breadcrumb pages={breadcrumbPages} />
             {children}
         </main>
+        <BannerImage bannerUrl="https://i.postimg.cc/YC6Ncf2n/banner.png" />
         <Footer />
     </>
 }
