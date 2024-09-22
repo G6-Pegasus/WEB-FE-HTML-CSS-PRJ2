@@ -11,8 +11,12 @@ const router = createBrowserRouter([
     element: <Home />,
   },
   {
-    path: "/plp",
+    path: "/:category/:subCategory?",
     element: <Plp />,
+  },
+  {
+    path: "/:category/:subCategory/:productId",
+    element: <div>PDP se estara desarrollando en un futuro</div>
   }
 ], { basename: "/WEB-FE-HTML-CSS-PRJ2" });
 

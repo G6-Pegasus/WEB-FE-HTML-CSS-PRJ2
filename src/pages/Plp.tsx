@@ -1,7 +1,7 @@
 import Main from "../components/main/Main"
 
 const Plp = () => {
-    return <Main breadcrumbPages={[]}>
+    return <Main>
         Content
     </Main>
 }
