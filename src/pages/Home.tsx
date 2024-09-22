@@ -1,7 +1,7 @@
 import Main from "../components/main/Main"
 import FeaturedProduct from "../components/home/FeaturedProduct"
 import { featuredProducts } from "../utils/home/featured_products"
-import BannerImage from '../components/home/Banner'
+import Banner from '../components/home/Banner'
 import PromotionalImage from "../components/home/PromotionalImage"
 import { data_promotional_images } from "../utils/home/promotional_image"
 
@@ -32,7 +32,7 @@ const Home = () => {
                 })}
             </div>
 
-            <BannerImage bannerUrl="https://i.postimg.cc/YC6Ncf2n/banner.png" />
+            <Banner bannerUrl="https://i.postimg.cc/YC6Ncf2n/banner.png" />
         </Main>
     )
 }
