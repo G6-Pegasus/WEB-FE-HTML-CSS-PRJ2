@@ -1,6 +1,7 @@
 import { Link, useParams } from "react-router-dom"
 import Main from "../components/main/Main"
 import Product from "../components/plp/Product"
+import Filter from "../components/plp/Filter";
 import { useState, useEffect } from "react"
 import { get_plp_data } from "../utils/plp/plp_data"
 import * as Interfaces from '../utils/plp/interfaces'
@@ -27,7 +28,16 @@ const Plp = () => {
     return <Main>
         <section className="flex flex-col md:flex-row sm:mx-5 mx-2 sm:mb-5 mb-2 gap-5">
             
-            <aside className="md:w-1/4 bg-gray-200 p-4"></aside>
+            <aside className="inline-block m-2 p-4 bg-[#211f43] rounded-lg h-max w-full sm:w-auto md:w-1/4">
+                <h3 className="text-white font-bold mb-2 text-lg">Filtros</h3>
+                {filters.length > 0 ? (
+                    filters.map((filter) => (
+                        <Filter key={filter.name} name={filter.name} items={filter.items} />
+                    ))
+                ) : (
+                    <p className="text-white">Selecciona una subcategoría para ver filtros</p>
+                )}
+            </aside>
 
             <section className="md:w-3/4 flex flex-col gap-5">
                 
@@ -62,6 +72,7 @@ const Plp = () => {
         
         </section>
     </Main>
-}
+  );
+};
 
-export default Plp
+export default Plp;

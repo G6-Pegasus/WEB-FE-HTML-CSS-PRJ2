@@ -10,10 +10,10 @@ interface MainProps {
 const Main = ({ children } : MainProps) => {
     const location: Location = useLocation()
     const pages: string[] = location.pathname.split("/").slice(1)
-
+  
     return <>
         <Header />
-        <main>
+        <main className='bg-[#ffffff]'>
             {pages[0] !== '' && <Breadcrumb pages={pages} />}
             {children}
         </main>

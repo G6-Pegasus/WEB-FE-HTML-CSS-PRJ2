@@ -1,10 +1,5 @@
 import { data_plp, SubCategories } from "./interfaces"
 
-const formatNumber = new Intl.NumberFormat('es-CL', { 
-    style: 'currency', 
-    currency: 'CLP' 
-})
-
 const location_categories: Record<SubCategories, string> = {
     "Electrodomésticos": "./appliance/appliance.ts",
     "Climatización": "./appliance/climate_control.ts",
@@ -29,13 +24,19 @@ const location_categories: Record<SubCategories, string> = {
     "": ""
 }
 
+const formatNumber = new Intl.NumberFormat('es-CL', { 
+    style: 'currency', 
+    currency: 'CLP' 
+})
+
 export const convertNumberToMoney = (value : number) => formatNumber.format(value)
 
 export async function get_plp_data(category : SubCategories) : Promise<data_plp> {
     try {
-        if (category === "") return { data_plp_products: [], data_plp_filters: [] }
         return await import(/* @vite-ignore */ location_categories[category])
     } catch (err) {
+        console.log(err)
         return { data_plp_products: [], data_plp_filters: [] }
     }
 }
+
