@@ -13,7 +13,7 @@ const Main = ({ children } : MainProps) => {
 
     return <>
         <Header />
-        <main>
+        <main className='bg-[#ffffff]'>
             {pages[0] !== '' && <Breadcrumb pages={pages} />}
             {children}
         </main>
