@@ -51,7 +51,7 @@ const Plp = () => {
                         const { id, imageUrl, name, brand, category, subCategory, starts, reviews, price, discount } = product
                         const url = `/${category}/${subCategory}/${id}`
 
-                        return <Link key={index} className="Block" to={url}>
+                        return <Link key={index} className="Block" to="#">
                             <Product imageUrl={imageUrl} name={name} brand={brand} starts={starts} 
                                 reviews={reviews} price={price} discount={discount} />
                         </Link>
