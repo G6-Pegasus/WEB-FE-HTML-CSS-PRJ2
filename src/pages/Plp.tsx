@@ -5,6 +5,7 @@ import Filter from "../components/plp/Filter";
 import { useState, useEffect } from "react"
 import { get_plp_data } from "../utils/plp/plp_data"
 import * as Interfaces from '../utils/plp/interfaces'
+import Banner from "../components/home/Banner";
 
 type Params = {
     category: Interfaces.SubCategories,
@@ -68,11 +69,10 @@ const Plp = () => {
                     })}
                 </section>
 
-            </section>
-        
+            </section>        
         </section>
+        <Banner bannerUrl="https://i.postimg.cc/hjVLLgrm/banner-plp.png" />
     </Main>
-  );
 };
 
 export default Plp;
