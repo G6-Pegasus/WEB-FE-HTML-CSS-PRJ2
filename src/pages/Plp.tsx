@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useParams  } from "react-router-dom";
 import Filter from "../components/plp/Filter";
-import SubHeader from "../components/main/SubHeader";
+import Main from "../components/main/Main";
 import {get_plp_data} from "../utils/plp/plp_data";
 import * as interfaces from "../utils/plp/interfaces";
 
@@ -11,7 +11,7 @@ type Params = {
 }
 
 const Plp = () => {
-  const { category="", subCategory=""} =  useParams<Params>();
+  const { category="", subCategory } =  useParams<Params>();
   const [filters, setFilters] = useState<interfaces.Filter[]>([]);
 
   useEffect(() => {
@@ -24,8 +24,7 @@ const Plp = () => {
   }, [subCategory]);
 
   return (
-    <div>
-      <SubHeader />
+    <Main>
       <aside className="inline-block m-2 p-4 bg-[#211f43] rounded-lg h-max w-full sm:w-auto">
         <h3 className="text-white font-bold mb-2 text-lg">Filtros</h3>
         {filters.length > 0 ? (
@@ -36,7 +35,7 @@ const Plp = () => {
           <p className="text-white">Selecciona una subcategoría para ver filtros</p>
         )}
       </aside>
-    </div>
+    </Main>
   );
 };
 

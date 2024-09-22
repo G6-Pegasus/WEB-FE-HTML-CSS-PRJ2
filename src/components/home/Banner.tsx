@@ -1,9 +1,11 @@
 interface BannerProps {
-    imageUrl: string
+    bannerUrl: string
 }
 
-const Banner = ({} : BannerProps) => {
-    return <></>
+const Banner = ({bannerUrl} : BannerProps) => {
+    return <>
+    <img src={bannerUrl} alt="banner1" className="w-full h-auto" />
+    </>
 }
 
 export default Banner

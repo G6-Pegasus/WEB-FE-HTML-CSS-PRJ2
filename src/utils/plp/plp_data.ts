@@ -24,7 +24,7 @@ const location_subcategories: Record<interfaces.Subcategories, string> = {
 export async function get_plp_data(category: interfaces.Subcategories): Promise<interfaces.data_plp> {
     try {
         if(category === "") return { data_plp_products: [], data_plp_filters: [] };
-        const { data_plp_products, data_plp_filters } = await import(location_subcategories[category]);
+        const { data_plp_products, data_plp_filters } = await import(/* @vite-ignore */ location_subcategories[category]);
         return { data_plp_products, data_plp_filters };
     } catch (err) {
         console.error(err);
