@@ -1,10 +1,10 @@
+import { Location, useLocation } from "react-router-dom"
 import Header from "./Header"
 import Breadcrumb from './Breadcrumb'
 import PromotionalImage from '../home/PromotionalImage';
 import Footer from "./Footer"
 
 interface MainProps {
-    breadcrumbPages: string[],
     children: React.ReactNode
 }
 
@@ -14,10 +14,13 @@ const promotionalImages = [
   ];
 
 const Main = ({ breadcrumbPages, children } : MainProps) => {
+    const location: Location = useLocation()
+    const pages: string[] = location.pathname.split("/").slice(1)
+  
     return <>
         <Header />
-        <main className='bg-red-400'>
-            <Breadcrumb pages={breadcrumbPages} />
+        <main>
+            {pages[0] !== '' && <Breadcrumb pages={pages} />}
             {children}
         </main>
         <PromotionalImage PromotionalIMG={promotionalImages} />
