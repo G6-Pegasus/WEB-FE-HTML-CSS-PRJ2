@@ -3,6 +3,7 @@ import Header from "./Header"
 import Breadcrumb from './Breadcrumb'
 import PromotionalImage from '../home/PromotionalImage';
 import Footer from "./Footer"
+import BannerImage from '../home/Banner';
 
 interface MainProps {
     children: React.ReactNode
@@ -23,8 +24,8 @@ const Main = ({ breadcrumbPages, children } : MainProps) => {
             {pages[0] !== '' && <Breadcrumb pages={pages} />}
             {children}
         </main>
+        <BannerImage bannerUrl="https://i.postimg.cc/YC6Ncf2n/banner.png" />
         <PromotionalImage PromotionalIMG={promotionalImages} />
-        
         <Footer />
     </>
 }
