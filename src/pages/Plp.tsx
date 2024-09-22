@@ -26,11 +26,11 @@ const Plp = () => {
   return (
     <div>
       <SubHeader />
-      <aside className="inline-block ml-2 p-4 bg-[#211f43] rounded-lg h-max">
-        <h3 className="text-white font-semibold mb-4">Filtrar por</h3>
+      <aside className="inline-block m-2 p-4 bg-[#211f43] rounded-lg h-max w-full sm:w-auto">
+        <h3 className="text-white font-bold mb-2 text-lg">Filtros</h3>
         {filters.length > 0 ? (
           filters.map((filter) => (
-            <Filter key={filter.name} name={filter.name} items={filter.items} />
+        <Filter key={filter.name} name={filter.name} items={filter.items} />
           ))
         ) : (
           <p className="text-white">Selecciona una subcategoría para ver filtros</p>

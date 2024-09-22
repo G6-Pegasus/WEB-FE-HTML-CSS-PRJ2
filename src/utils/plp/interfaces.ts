@@ -1,5 +1,22 @@
 
-export type Subcategories = "Climatización" | "Refrigeración" | "Lavadoras-Secadoras" | "" ;
+export type Subcategories =
+    "Climatización" |
+    "Refrigeración" |
+    "Lavadoras-Secadoras" |
+    "Computadores" |
+    "Televisores" |
+    "Audio" |
+    "Vídeo" |
+    "Impresión" |
+    "Cámaras" |
+    "Celulares" |
+    "Tabletas" |
+    "Smartwatchs" |
+    "Salas" |
+    "Comedor" |
+    "Cocina" |
+    "Baño" |
+    "";
 
 export interface Product {
     id: number;
