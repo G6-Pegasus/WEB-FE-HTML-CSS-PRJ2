@@ -1,15 +1,7 @@
-interface PromotionalImageProps {
-    PromotionalIMG: { imageUrl: string }[];
-  }
-  
-  const PromotionalImage = ({ PromotionalIMG }: PromotionalImageProps) => {
-    return (
-      <div className="flex flex-col items-center ">
-        {PromotionalIMG.map((image, index) => (
-          <img key={index} src={image.imageUrl} alt={`Promotional Image ${index + 1}`} className="w-full h-auto" />
-        ))}
-      </div>
-    );
-  };
-  
-  export default PromotionalImage;
+import * as Interfaces from '../../utils/home/promotional_image'
+
+const PromotionalImage = ({ imageUrl, description }: Interfaces.PromotionalImage) => {
+    return <img src={imageUrl} alt={description} className="w-full h-auto" />
+};
+
+export default PromotionalImage;

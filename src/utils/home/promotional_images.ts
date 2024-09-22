@@ -1,1 +1,0 @@
-export const data_promotional_images = []

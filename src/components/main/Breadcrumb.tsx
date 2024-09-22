@@ -7,7 +7,8 @@ interface BreadcrumbProps {
 const Breadcrumb = ({ pages }: BreadcrumbProps) => {
     return <section className="sm:ml-5 ml-2 py-4">
         <ul className="flex flex-wrap">
-            {["Inicio"].concat(pages).map((page, index, arr) => <li key={index} className='flex items-center'>
+            {["Inicio"].concat(pages).map(page => decodeURIComponent(page))
+                .map((page, index, arr) => <li key={index} className='flex items-center'>
                 {index < arr.length - 1 ? (
                     <>
                         <Link className='text-blue-600' to={"/" + arr.slice(1, index + 1).join("/")}>{page}</Link>

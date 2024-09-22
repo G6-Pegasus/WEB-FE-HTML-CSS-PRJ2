@@ -1,5 +1,5 @@
-import Home from './pages/Home'
-import Plp from './pages/Plp'
+import Home from './pages/Home';
+import Plp from './pages/Plp';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -22,4 +22,4 @@ const router = createBrowserRouter([
 
 const App = () => <RouterProvider router={router} />
 
-export default App
+export default App;
