@@ -29,11 +29,11 @@ const Plp = () => {
     return <Main>
         <section className="flex flex-col md:flex-row sm:mx-5 mx-2 sm:mb-5 mb-2 gap-5">
             
-            <aside className="inline-block m-2 p-4 bg-[#211f43] rounded-lg h-max w-full sm:w-auto md:w-1/4">
+            <aside className="inline-block m-2 p-4 bg-[#211f43] rounded-lg h-max w-full sm:w-auto md:w-1/4 sm:max-w-xs shadow-">
                 <h3 className="text-white font-bold mb-2 text-lg">Filtros</h3>
                 {filters.length > 0 ? (
-                    filters.map((filter) => (
-                        <Filter key={filter.name} name={filter.name} items={filter.items} />
+                    filters.map((filter, index) => (
+                        <Filter key={index} name={filter.name} items={filter.items} />
                     ))
                 ) : (
                     <p className="text-white">Selecciona una subcategoría para ver filtros</p>
@@ -61,6 +61,7 @@ const Plp = () => {
                     {products.map((product, index) => {
                         const { id, imageUrl, name, brand, category, subCategory, starts, reviews, price, discount } = product
                         const url = `/${category}/${subCategory}/${id}`
+                        console.log(url)
 
                         return <Link key={index} className="Block" to="#">
                             <Product imageUrl={imageUrl} name={name} brand={brand} starts={starts} 
