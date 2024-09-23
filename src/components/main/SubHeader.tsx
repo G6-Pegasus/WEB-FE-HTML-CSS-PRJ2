@@ -1,31 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-
-const categories = [
-  {
-    name: "Tecnología",
-    subcategories: [
-      "Computadores",
-      "Televisores",
-      "Audio",
-      "Vídeo",
-      "Impresión",
-      "Cámaras",
-    ],
-  },
-  {
-    name: "Electrodomésticos",
-    subcategories: ["Climatización", "Refrigeración", "Lavadoras-Secadoras"],
-  },
-  {
-    name: "Celulares",
-    subcategories: ["Celulares", "Tabletas", "Smartwatchs"],
-  },
-  {
-    name: "Hogar",
-    subcategories: ["Salas", "Comedor", "Cocina", "Baño"],
-  },
-];
+import { data_navegation_menu as categories } from "../../utils/home/navegation_menu";
 
 const SubHeader = () => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
