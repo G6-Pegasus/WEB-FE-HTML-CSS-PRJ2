@@ -32,6 +32,6 @@ export const convertNumberToMoney = (value : number) => formatNumber.format(valu
 
 export async function get_plp_data(category : SubCategories | "") : Promise<data_plp> {
     if (category === "") return Promise.resolve({ data_plp_products: [], data_plp_filters: [] });
-    return location_categories[category] || Promise.resolve({ data_plp_products: [], data_plp_filters: [] });
+    return await location_categories[category] || Promise.resolve({ data_plp_products: [], data_plp_filters: [] });
 }
 
