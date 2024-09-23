@@ -31,7 +31,7 @@ const SubHeader  = () => {
                           onMouseEnter={() => handleMouseEnter(category.name)}
                           onMouseLeave={handleMouseLeave}
                         >
-                            <Link to = {`/${category}`} className="font-montserrat text-lg font-medium text-white text-center no-underline">
+                            <Link to = {`/${category.name}`} className="font-montserrat text-lg font-medium text-black text-center no-underline">
                                 {category.name}
                             </Link>
                             {selectedCategory === category.name && (
