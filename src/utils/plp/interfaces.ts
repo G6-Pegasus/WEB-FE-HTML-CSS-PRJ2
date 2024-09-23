@@ -13,7 +13,7 @@ export interface Product {
 
 export type SubCategories = "Electrodomésticos" | "Climatización" | "Refrigeración" | "Lavadoras-Secadoras" |
             "Celularesc" | "Celulares" | "Tabletas" | "Smartwatchs" | "Hogar" | "Salas" | "Comedor" | "Cocina" | 
-            "Baño" | "Tecnología" | "Computadores" | "Televisores" | "Audio" | "Video" | "Impresión" | "Cámaras" | ""
+            "Baño" | "Tecnología" | "Computadores" | "Televisores" | "Audio" | "Vídeo" | "Impresión" | "Cámaras"
 
 interface Item {
     name: string,

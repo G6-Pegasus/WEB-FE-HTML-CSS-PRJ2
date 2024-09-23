@@ -59,9 +59,9 @@ const Plp = () => {
                 {/* --------------------- LIST OF PRODUCTS ---------------------- */}
                 <section className="grid gap-4">
                     {products.map((product, index) => {
-                        const { id, imageUrl, name, brand, category, subCategory, starts, reviews, price, discount } = product
-                        const url = `/${category}/${subCategory}/${id}`
-                        console.log(url)
+                        const { imageUrl, name, brand, starts, reviews, price, discount } = product
+                        //const { id, imageUrl, name, brand, category, subCategory, starts, reviews, price, discount } = product
+                        //const url = `/${category}/${subCategory}/${id}`
 
                         return <Link key={index} className="Block" to="#">
                             <Product imageUrl={imageUrl} name={name} brand={brand} starts={starts} 
