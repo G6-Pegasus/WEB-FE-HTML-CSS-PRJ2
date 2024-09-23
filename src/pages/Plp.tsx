@@ -27,9 +27,10 @@ const Plp = () => {
     }, [category, subCategory])
 
     return <Main>
-        <section className="flex flex-col md:flex-row sm:mx-5 mx-2 sm:mb-5 mb-2 gap-5">
+        <section className="flex flex-col md:flex-row gap-5">
             
-            <aside className="inline-block m-2 p-4 bg-[#211f43] rounded-lg h-max w-full sm:w-auto md:w-1/4 sm:max-w-xs shadow-">
+            <aside className="inline-block m-2 p-4 bg-[#211f43] rounded-lg h-max max-w-full sm:w-auto md:w-1/4 sm:max-w-xs shadow-">
+
                 <h3 className="text-white font-bold mb-2 text-lg">Filtros</h3>
                 {filters.length > 0 ? (
                     filters.map((filter, index) => (
@@ -40,7 +41,7 @@ const Plp = () => {
                 )}
             </aside>
 
-            <section className="md:w-3/4 flex flex-col gap-5">
+            <section className="md:w-3/4 flex flex-col gap-5 mx-4 md:mx-0 md:mb-4">
                 
                 {/* ----------------------------- TITLE ------------------------------ */}
                 <section className="flex flex-col sm:flex-row justify-between sm:items-center">
@@ -59,9 +60,9 @@ const Plp = () => {
                 {/* --------------------- LIST OF PRODUCTS ---------------------- */}
                 <section className="grid gap-4">
                     {products.map((product, index) => {
-                        const { id, imageUrl, name, brand, category, subCategory, starts, reviews, price, discount } = product
-                        const url = `/${category}/${subCategory}/${id}`
-                        console.log(url)
+                        const { imageUrl, name, brand, starts, reviews, price, discount } = product
+                        //const { id, imageUrl, name, brand, category, subCategory, starts, reviews, price, discount } = product
+                        //const url = `/${category}/${subCategory}/${id}`
 
                         return <Link key={index} className="Block" to="#">
                             <Product imageUrl={imageUrl} name={name} brand={brand} starts={starts} 

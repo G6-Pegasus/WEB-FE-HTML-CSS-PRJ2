@@ -71,7 +71,7 @@ const SubHeader = () => {
             >
               <button
                 onClick={() => handleCategoryClick(category.name)}
-                className="w-full text-sm border bg-white rounded-lg py-2 px-3 text-black no-underline hover:text-[#726fad] transition duration-200 text-left md:text-center flex justify-between items-center"
+                className="w-full text-sm  py-2 px-3 text-black no-underline hover:text-[#726fad] transition duration-200 text-left md:text-center flex justify-between items-center"
               >
                 <span className="mr-2">{category.name}</span>
                 {renderSVG(category.name)}

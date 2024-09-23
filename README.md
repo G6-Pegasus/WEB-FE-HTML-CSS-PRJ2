@@ -1,50 +1,23 @@
-# React + TypeScript + Vite
+# Proyecto de Desarrollo Web Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto es parte de la asignatura <b>Desarrollo Web Frontend</b> de la Universidad del Norte. El objetivo es migrar una maqueta HTML y CSS a un proyecto desarrollado en React.js utilizando TypeScript y desplegado en GitHub Pages.
 
-Currently, two official plugins are available:
+## Descripción del Proyecto
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Se trata de una página web que incluye una <b>página de inicio</b> con varias secciones (header, sub header, contenido principal, footer, etc.) y una <b>página de lista de productos (PLP)</b>. El proyecto se realiza en equipo y debe cumplir con las historias de usuario asignadas en dos sprints, teniendo como entregables dos MVPs.
 
-## Expanding the ESLint configuration
+## Estructura del Proyecto
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- <b>Inicio:</b> Página con varias secciones que incluye el header, sub header, contenido principal, productos destacados, y footer.
+- <b>PLP (Product Listing Page):</b> Página donde se listan los productos según la categoría seleccionada.
+Componentes reutilizables: Header, sub header, menú de navegación, breadcrumb, imágenes promocionales, productos destacados, etc.
+- <b>Responsive Design:</b> Todas las páginas y componentes se adaptan a dispositivos móviles.
 
-- Configure the top-level `parserOptions` property like this:
+## Historias de Usuario Implementadas
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- <b>HU2005 - Estructura inicial del proyecto:</b> Creación de la estructura base del proyecto y layout principal.
+- <b>HU2006 - Header:</b> Migración del header de la maqueta a un componente React.js.
+- <b>HU2007 - Sub header y menú de navegación:</b> Implementación del menú de navegación de manera dinámica.
+- <b>HU2008 - Footer:</b> Migración del footer de la maqueta a un componente React.js.
+- <b>HU2009 - Breadcrumb:</b> Componente breadcrumb dinámico utilizando React Router.
+- <b>HU2010 - Imágenes promocionales:</b> Implementación de imágenes dinámicas en la página de inicio.

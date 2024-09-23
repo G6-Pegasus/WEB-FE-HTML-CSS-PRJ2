@@ -11,8 +11,8 @@ const Breadcrumb = ({ pages }: BreadcrumbProps) => {
                 .map((page, index, arr) => <li key={index} className='flex items-center'>
                 {index < arr.length - 1 ? (
                     <>
-                        <Link className='text-blue-600' to={"/" + arr.slice(1, index + 1).join("/")}>{page}</Link>
-                        <span className="text-blue-600 mx-2">/</span>
+                        <Link className='text-[#726fad]' to={"/" + arr.slice(1, index + 1).join("/")}>{page}</Link>
+                        <span className="text-[#726fad] mx-2">/</span>
                     </>
                 ) : (
                     <span className='text-gray-500' aria-current="page">{page}</span>
