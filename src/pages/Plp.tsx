@@ -29,7 +29,7 @@ const Plp = () => {
     return <Main>
         <section className="flex flex-col md:flex-row sm:mx-5 mx-2 sm:mb-5 mb-2 gap-5">
             
-            <aside className="inline-block m-2 p-4 bg-[#211f43] rounded-lg h-max w-full sm:w-auto md:w-1/4 sm:max-w-xs shadow-">
+            <aside className="inline-block p-4 bg-[#211f43] rounded-lg h-max w-full sm:w-auto md:w-1/4 sm:max-w-xs shadow-">
                 <h3 className="text-white font-bold mb-2 text-lg">Filtros</h3>
                 {filters.length > 0 ? (
                     filters.map((filter, index) => (

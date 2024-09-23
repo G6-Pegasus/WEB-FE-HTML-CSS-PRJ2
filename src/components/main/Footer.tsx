@@ -49,7 +49,7 @@ const Dropdown: React.FC<Dropdown> = ({ tittle, options }) => {
 
 const Footer: React.FC = () => {
     return (
-        <footer className="w-full bg-[#211f43] text-[#ffffff] py-8">
+        <footer className="w-full bg-[#202020] text-[#ffffff] py-8">
             <div className="flex flex-wrap justify-between items-center px-8">
                 <h1 className="w-full md:w-auto text-center md:text-left mb-4 md:mb-0">
                     Pegasus Retail Store S.A.S 900.123.456-7 

@@ -25,7 +25,7 @@ const FeaturedProduct: React.FC<FeaturedProductProps> = ({ product, formattedPri
                         <span className="line-through">${formattedPrice}</span>
                     </p>
                     <p className="text-[#2b8603] text-2xl font-bold">
-                        ${formattedDiscountPrice} <span className="text-[#888] text-base">({product.discount}%)</span>
+                        ${formattedDiscountPrice} <span className="text-[#888] text-base">(-{product.discount}%)</span>
                     </p>
                 </div>
             </Link>
