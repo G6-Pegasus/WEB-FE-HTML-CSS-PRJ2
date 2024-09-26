@@ -24,7 +24,7 @@ const router = createBrowserRouter([
     path: "/cart",
     element: <Cart />
   }
-], { basename: "/WEB-FE-HTML-CSS-PRJ2" });
+], /*{ basename: "/WEB-FE-HTML-CSS-PRJ2" } */ );
 
 const App = () => <RouterProvider router={router} />
 
