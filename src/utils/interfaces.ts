@@ -1,14 +1,19 @@
-export interface Product {
+export interface FeaturedProduct {
     id?: number;
     imageUrl: string;
     name: string;
-    brand: string;
     category?: string;
     subCategory?: string;
-    starts: number;
-    reviews: number;
     price: number;
     discount: number;
+}
+
+export interface Product extends FeaturedProduct {
+    brand: string;
+    starts: number;
+    reviews: number;
+    description?: string;
+    info?: { [key: string]: string }
 }
 
 export type SubCategories = "Electrodomésticos" | "Climatización" | "Refrigeración" | "Lavadoras-Secadoras" |
@@ -28,4 +33,10 @@ export interface Filter {
 export interface data_plp {
     data_plp_products: Product[];
     data_plp_filters: Filter[];
+}
+
+export interface PromotionalImage {
+    id?: number,
+    imageUrl: string,
+    description: string
 }

@@ -1,3 +1,10 @@
+const formatNumber = new Intl.NumberFormat('es-CL', { 
+    style: 'currency', 
+    currency: 'CLP' 
+})
+
+export const convertNumberToMoney = (value : number) => formatNumber.format(value)
+
 export const data_navegation_menu = [
     {
       name: "Tecnología",

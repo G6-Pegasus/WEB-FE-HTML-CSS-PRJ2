@@ -1,30 +1,20 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartPlus } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
+import * as Interfaces from '../../utils/interfaces'
+import { convertNumberToMoney } from '../../utils/functions'
 
-interface FeaturedProductProps {
-    product: {
-        imageUrl: string
-        name: string
-        normalPrice: number
-        discount: number
-    }
-    formattedPrice: string
-    formattedDiscountPrice: string
-    index: number
-}
-
-const FeaturedProduct: React.FC<FeaturedProductProps> = ({ product, formattedPrice, formattedDiscountPrice, index }) => {
+const FeaturedProduct = ({ id, imageUrl, name, category, subCategory, price, discount } : Interfaces.FeaturedProduct) => {
     return (
-        <div key={index} className="flex flex-col border p-4 rounded-lg shadow-md transform transition-transform duration-200 hover:scale-105">
-            <Link to="#" className="flex flex-col grow">
-                <img src={product.imageUrl} alt={product.name} className="w-full h-auto object-cover" />
-                <h2 className="text-lg font-bold text-[#211f43] pb-4 grow">{product.name}</h2>
+        <div className="flex flex-col border p-4 rounded-lg shadow-md transform transition-transform duration-200 hover:scale-105">
+            <Link to={`/${category}/${subCategory}/${id}`} className="flex flex-col grow">
+                <img src={imageUrl} alt={name} className="w-full h-auto object-cover" />
+                <h2 className="text-lg font-bold text-[#211f43] pb-4 grow">{name}</h2>
                 <p className="text-[#888]">
-                    <span className="line-through">${formattedPrice}</span>
+                    <span className="line-through">{convertNumberToMoney(price)}</span>
                 </p>
                 <p className="text-[#2b8603] text-2xl font-bold">
-                    ${formattedDiscountPrice} <span className="text-[#888] text-base">({product.discount}%)</span>
+                    {convertNumberToMoney(price * (1 - discount / 100))} <span className="text-[#888] text-base">(-{convertNumberToMoney(discount)}%)</span>
                 </p>
             </Link>
             <div className="py-4">
