@@ -1,5 +1,3 @@
-// src/services/plpService.ts
-
 export const fetchProducts = async (category: string, subCategory: string) => {
     const response = await fetch(`http://localhost:3000/products?category=${category}&subCategory=${subCategory}`);
     if (!response.ok) {
@@ -15,7 +13,6 @@ export const fetchFilters = async (category: string, subCategory: string) => {
     }
     const data = await response.json();
     
-    // Filtramos los datos de acuerdo a la categoría y subcategoría
     const filteredData = data.filter(
         (item: { category: string; subCategory: string }) => item.category === category && item.subCategory === subCategory
     );

@@ -1,4 +1,3 @@
-// src/hooks/usePlpData.ts
 import { useQuery } from '@tanstack/react-query';
 import { fetchProducts, fetchFilters } from '../services/plpServices.ts';
 
