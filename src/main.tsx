@@ -10,7 +10,10 @@ import { createRoot } from 'react-dom/client'
 
 // React-router and tailwind
 import App from './App.tsx'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import ReactDOM from 'react-dom/client';
 import './index.css'
+
 
 library.add(fab, far, fas)
 
@@ -19,3 +22,16 @@ createRoot(document.getElementById('root')!).render(
     <App />
   </StrictMode>,
 )
+
+// Crear una instancia de QueryClient
+const queryClient = new QueryClient();
+
+// Crear raíz de la aplicación
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    {/* Proveedor de QueryClient que envuelve toda la app */}
+    <QueryClientProvider client={queryClient}>
+      <App />
+    </QueryClientProvider>
+  </StrictMode>
+);

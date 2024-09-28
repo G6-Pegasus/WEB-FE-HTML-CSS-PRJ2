@@ -16,23 +16,48 @@ const Plp = () => {
     const { category = "", subCategory } = useParams<Params>();
     const [products, setProducts] = useState<Interfaces.Product[]>([])
     const [filters, setFilters] = useState<Interfaces.Filter[]>([])
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const getData = async () => {
-            const { data_plp_products, data_plp_filters } = await get_plp_data(subCategory ?? (category == "Celulares" ? "Celularesc" : category))
+            const { data_plp_products} = await get_plp_data(subCategory ?? (category == "Celulares" ? "Celularesc" : category))
             setProducts(data_plp_products)
-            setFilters(data_plp_filters)
         }
         getData()
     }, [category, subCategory])
 
-    return <Main>
-        <section className="flex flex-col md:flex-row gap-5">
-            
-            <aside className="inline-block m-2 p-4 bg-[#211f43] rounded-lg h-max max-w-full sm:w-auto md:w-1/4 sm:max-w-xs shadow-">
+    useEffect(() => {
+        const fetchFilters = async () => {test-fetch
+            try {
+                const response = await fetch('https://web-fe-html-css-prj2-api.onrender.com/filters');
+                const data = await response.json();
+                const filteredData = data.filter(
+                    (item: { category: string; subCategory: string; filters: Interfaces.Filter[] }) => item.category === category && item.subCategory === subCategory
+                );
 
+                if (filteredData.length > 0) {
+                    setFilters(filteredData[0].filters);
+                } else {
+                    setFilters([]);
+                }
+            } catch (error) {
+                console.error('Error fetching filters:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchFilters();
+    }, [category, subCategory]);
+
+    return <Main>
+        <section className="flex flex-col md:flex-row gap-5">    
+            <aside className="inline-block m-2 p-4 bg-[#211f43] rounded-lg h-max max-w-full sm:w-auto md:w-1/4 sm:max-w-xs shadow-">
                 <h3 className="text-white font-bold mb-2 text-lg">Filtros</h3>
-                {filters.length > 0 ? (
+
+                {loading ? (
+                        <p className="text-white">Cargando filtros...</p>
+                ) : filters.length > 0 ? (
                     filters.map((filter, index) => (
                         <Filter key={index} name={filter.name} items={filter.items} />
                     ))
@@ -40,7 +65,6 @@ const Plp = () => {
                     <p className="text-white">Selecciona una subcategoría para ver filtros</p>
                 )}
             </aside>
-
             <section className="md:w-3/4 flex flex-col gap-5 mx-4 md:mx-0 md:mb-4">
                 
                 {/* ----------------------------- TITLE ------------------------------ */}
@@ -56,14 +80,12 @@ const Plp = () => {
                         </select>
                     </section>
                 </section>
-
                 {/* --------------------- LIST OF PRODUCTS ---------------------- */}
                 <section className="grid gap-4">
                     {products.map((product, index) => {
                         const { imageUrl, name, brand, starts, reviews, price, discount } = product
                         //const { id, imageUrl, name, brand, category, subCategory, starts, reviews, price, discount } = product
                         //const url = `/${category}/${subCategory}/${id}`
-
                         return <Link key={index} className="Block" to="#">
                             <Product imageUrl={imageUrl} name={name} brand={brand} starts={starts} 
                                 reviews={reviews} price={price} discount={discount} />
