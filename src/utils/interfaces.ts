@@ -5,9 +5,16 @@ export interface FeaturedProduct {
     brand: string;
     category?: string;
     subCategory?: string;
-    quantity?: number | 1
+    quantity?: number
     price: number;
     discount: number;
+}
+
+export type deliveryOptions = "Estandar" | "Express" | "Overnight"
+export const deliveryOptionsArr: deliveryOptions[] = ["Estandar", "Express", "Overnight"]
+
+export interface CartProduct extends FeaturedProduct {
+    deliveryMethod?: deliveryOptions
 }
 
 export interface Product extends FeaturedProduct {

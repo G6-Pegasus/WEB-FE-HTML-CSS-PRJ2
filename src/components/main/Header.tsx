@@ -2,8 +2,11 @@ import SubHeader from './SubHeader'
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping, faUser, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import DataConsumer from '../cart/DataContext';
 
 const Header = () => {
+    const { data } = DataConsumer()
+
     return <header className='bg-[#211f43] text-white w-full z-50'>
         <div className="grid md:grid-cols-3 md:grid-rows-1 grid-cols-2 grid-rows-2 gap-4 p-4">
             <div className="flex justify-start items-center gap-[10px] col-span-1 row-span-1 md:col-span-1 md:row-span-1 order-1 md:order-1 p-2">
@@ -30,6 +33,9 @@ const Header = () => {
                 <div className="flex justify-center items-center flex-col">
                     <Link className="no-underline text-white" to="/cart">
                         <FontAwesomeIcon icon={faCartShopping} style={{ color: "#ffffff", width: "24px", height: "24px"}} />
+                        {data.length > 0 && <span className={'absolute inline-flex items-center px-2 py-1 rounded-full text-white text-sm bg-red-500'}>
+                            {data.length}
+                        </span>}
                     </Link>
                     <Link className="no-underline text-white" to="/cart">
                         <span className="header-user_section-area-text">

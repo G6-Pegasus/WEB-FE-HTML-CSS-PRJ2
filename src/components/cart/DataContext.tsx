@@ -1,9 +1,9 @@
 import { createContext, useState, useContext } from "react";
-import { FeaturedProduct } from "../../utils/interfaces";
+import { CartProduct } from "../../utils/interfaces";
 
 interface DataContextType {
-    data: FeaturedProduct[];
-    setData: (data: FeaturedProduct[]) => void;
+    data: CartProduct[];
+    setData: (data: CartProduct[]) => void;
 }
 
 const initialContext: DataContextType = {
@@ -14,7 +14,7 @@ const initialContext: DataContextType = {
 const DataContext = createContext<DataContextType>(initialContext);
 
 export const DataProvider = ({ children }: { children: React.ReactNode }) => {
-    const [data, setData] = useState<FeaturedProduct[]>([]);
+    const [data, setData] = useState<CartProduct[]>([]);
     return (
         <DataContext.Provider value={{ data, setData }}>
             {children}
