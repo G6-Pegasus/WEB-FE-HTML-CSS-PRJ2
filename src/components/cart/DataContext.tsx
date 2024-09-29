@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useContext } from "react";
 import { FeaturedProduct } from "../../utils/interfaces";
 
 interface DataContextType {
@@ -11,14 +11,17 @@ const initialContext: DataContextType = {
     setData: () => {}
 };
 
-export const DataContext = createContext<DataContextType>(initialContext);
+const DataContext = createContext<DataContextType>(initialContext);
 
 export const DataProvider = ({ children }: { children: React.ReactNode }) => {
-  const [data, setData] = useState<FeaturedProduct[]>([]);
-
-  return (
-    <DataContext.Provider value={{ data, setData }}>
-      {children}
-    </DataContext.Provider>
-  );
+    const [data, setData] = useState<FeaturedProduct[]>([]);
+    return (
+        <DataContext.Provider value={{ data, setData }}>
+            {children}
+        </DataContext.Provider>
+    );
 };
+
+export default function DataConsumer() {
+    return useContext(DataContext)
+}

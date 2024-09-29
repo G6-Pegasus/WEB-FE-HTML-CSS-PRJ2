@@ -1,13 +1,12 @@
-import { useContext } from "react"
 import Main from "../components/main/Main"
 import { convertNumberToMoney } from "../utils/functions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons"
-import { DataContext } from '../components/cart/DataContext';
+import DataConsumer from '../components/cart/DataContext';
 import { Link } from "react-router-dom";
 
 const Cart = () => {
-    const { data: products } = useContext(DataContext);
+    const { data: products } = DataConsumer();
 
     return <Main>
         <aside className="px-4 pb-4 grid grid-rows-2 grid-cols-1 lg:grid-rows-1 lg:grid-cols-3 gap-4">
@@ -49,7 +48,7 @@ const Cart = () => {
                     </article>
                 })}
             </section>
-            <section className="grid col-auto row-auto lg:row-span-1 lg:col-start-3 lg:col-span-1">description</section>
+            <section className="grid col-auto row-auto lg:row-span-1 lg:col-start-3 lg:col-span-1"></section>
         </aside>
     </Main>
 }
