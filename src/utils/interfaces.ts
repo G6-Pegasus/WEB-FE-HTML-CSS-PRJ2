@@ -2,6 +2,7 @@ export interface FeaturedProduct {
     id?: number;
     imageUrl: string;
     name: string;
+    brand: string;
     category?: string;
     subCategory?: string;
     price: number;
@@ -9,7 +10,6 @@ export interface FeaturedProduct {
 }
 
 export interface Product extends FeaturedProduct {
-    brand: string;
     starts: number;
     reviews: number;
     description?: string;
