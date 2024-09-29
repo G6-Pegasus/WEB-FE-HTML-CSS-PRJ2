@@ -5,6 +5,7 @@ export interface FeaturedProduct {
     brand: string;
     category?: string;
     subCategory?: string;
+    quantity: number | 1
     price: number;
     discount: number;
 }

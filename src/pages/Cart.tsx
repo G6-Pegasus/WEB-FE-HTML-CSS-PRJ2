@@ -1,18 +1,18 @@
-import { useState } from "react"
+import { useContext } from "react"
 import Main from "../components/main/Main"
-import { FeaturedProduct } from "../utils/interfaces";
 import { convertNumberToMoney } from "../utils/functions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons"
+import { DataContext } from '../components/cart/DataContext';
 import { Link } from "react-router-dom";
 
 const Cart = () => {
-    const [products, setProducts] = useState<FeaturedProduct[]>([]);
+    const { data: products } = useContext(DataContext);
 
     return <Main>
         <aside className="px-4 pb-4 grid grid-rows-2 grid-cols-1 lg:grid-rows-1 lg:grid-cols-3 gap-4">
             <section className="grid col-span-1 row-span-1 lg:col-start-1 lg:col-span-2 gap-4">
-                {products.map(({ id, name, brand, category, subCategory, imageUrl, price, discount }) => {
+                {products.map(({ id, name, quantity, brand, category, subCategory, imageUrl, price, discount }) => {
                     return <article key={id} className="w-full h-auto gap-5 flex items-center justify-evenly flex-col md:flex-row border rounded-lg p-5 md:p-2">
                         <img className="w-3/4 md:w-40" src={imageUrl} alt={`${name} ${brand}`} />
                         <form className="flex flex-col justify-center">
@@ -35,7 +35,7 @@ const Cart = () => {
                                 <div className="flex flex-row justify-between sm:flex-col">
                                     <fieldset className="flex gap-2">
                                         <label htmlFor="cart-quantity"><b>Cantidad:</b></label>
-                                        <select id="cart-quantity">
+                                        <select id="cart-quantity" value={quantity}>
                                             {[...Array(15)].map((_, index) => <option key={index} value={index}>{index}</option>)}
                                         </select>
                                     </fieldset>
