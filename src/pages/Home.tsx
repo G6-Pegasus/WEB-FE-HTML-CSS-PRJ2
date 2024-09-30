@@ -6,24 +6,7 @@ import * as Interfaces from '../utils/interfaces'
 
 const Home = () => {
     const data_promotional_images: Interfaces.PromotionalImage[] = []
-    const featuredProducts: Interfaces.FeaturedProduct[] = [
-        {
-            id: 1,
-            imageUrl: "https://www.alkosto.com/medias/7704353418637-001-750Wx750H?context=bWFzdGVyfGltYWdlc3w5MjY2fGltYWdlL3dlYnB8YURRd0wyaGxNQzh4TkRZeU9EUXpPRFF3T1RJME5pODNOekEwTXpVek5ERTROak0zWHpBd01WODNOVEJYZURjMU1FZ3xmZDEyYTE4MzZhYWUzODM3NTFkODYxYTdhZmQzZmU4YTcxZTE0ZTBiYjM3NjY5OWU5MDE1MWYzZjQ3ZjcwNjlm",
-            name: "Estufa de Piso HACEB",
-            brand: "4 Puestos Con Horno Gas Natural Romero 50-Torre Negro",
-            price: 700000,
-            discount: 40
-        },
-        {
-            id: 2,
-            imageUrl: "https://www.alkosto.com/medias/7704353418637-001-750Wx750H?context=bWFzdGVyfGltYWdlc3w5MjY2fGltYWdlL3dlYnB8YURRd0wyaGxNQzh4TkRZeU9EUXpPRFF3T1RJME5pODNOekEwTXpVek5ERTROak0zWHpBd01WODNOVEJYZURjMU1FZ3xmZDEyYTE4MzZhYWUzODM3NTFkODYxYTdhZmQzZmU4YTcxZTE0ZTBiYjM3NjY5OWU5MDE1MWYzZjQ3ZjcwNjlm",
-            name: "Estufa de Piso HACEB",
-            brand: "4 Puestos Con Horno Gas Natural Romero 50-Torre Negro",
-            price: 650000,
-            discount: 25
-        }
-    ]
+    const featuredProducts: Interfaces.FeaturedProduct[] = []
 
     return (
         <Main>
