@@ -11,7 +11,7 @@ const PromotionalImage: React.FC = () => {
           const data = await response.json();
           setPromotionalImages(data);
         } catch (error) {
-          console.error('Error fetching promotional images:', error);
+          console.error('(PLACEHOLDER)Error fetching promotional images:', error);
         }
       };
   
@@ -20,6 +20,7 @@ const PromotionalImage: React.FC = () => {
   
     return (
       <div className="promotional-image-gallery">
+        
         {promotionalImages.length > 0 ? (
           promotionalImages.map((image, index) => (
             <img
@@ -30,7 +31,7 @@ const PromotionalImage: React.FC = () => {
             />
           ))
         ) : (
-          <p>Loading images...</p>
+          <p>Loading images...(PLACEHOLDER)</p>
         )}
       </div>
     );
