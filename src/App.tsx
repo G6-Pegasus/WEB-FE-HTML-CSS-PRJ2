@@ -6,7 +6,6 @@ import {
     createBrowserRouter,
     RouterProvider,
 } from "react-router-dom";
-import { DataProvider } from './components/cart/DataContext'
 
 const router = createBrowserRouter([
     {
@@ -28,7 +27,5 @@ const router = createBrowserRouter([
 ], /*{ basename: "/WEB-FE-HTML-CSS-PRJ2" } */ );
 
 export default function App() {
-    return <DataProvider>
-        <RouterProvider router={router} />
-    </DataProvider>
+    return <RouterProvider router={router} />
 }
