@@ -23,6 +23,10 @@ const router = createBrowserRouter([
   {
     path: "/cart",
     element: <Cart />
+  },
+  {
+    path: "/carrito",
+    element: <Cart />
   }
 ], /*{ basename: "/WEB-FE-HTML-CSS-PRJ2" } */ );
 

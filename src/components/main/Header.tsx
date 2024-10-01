@@ -28,10 +28,10 @@ const Header = () => {
 
             <div className="flex justify-end items-center font-montserrat text-[14px] text-center gap-4 col-span-1 row-span-1 md:col-span-1md:row-span-1 order-2 md:order-3 p-2">
                 <div className="flex justify-center items-center flex-col">
-                    <Link className="no-underline text-white" to="/Cart">
+                    <Link className="no-underline text-white" to="/Carrito">
                     <FontAwesomeIcon icon={faCartShopping} style={{ color: "#ffffff", width: "24px", height: "24px"}} />
                     </Link>
-                    <Link className="no-underline text-white" to="/Cart">
+                    <Link className="no-underline text-white" to="/Carrito">
                         <span className="header-user_section-area-text">
                             Carrito
                         </span>
