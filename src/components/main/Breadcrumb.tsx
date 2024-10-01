@@ -6,7 +6,7 @@ const Breadcrumb = () => {
   const pages = pathname.split('/').filter(page => page);
 
   return (
-    <section aria-label="breadcrumb">
+    <section aria-label="breadcrumb" className="sm:ml-5 ml-2 py-4">
       <ul className="flex flex-wrap">
         {pages.length === 0 ? (
           <li className='flex items-center'>
