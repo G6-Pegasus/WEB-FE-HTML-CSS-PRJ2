@@ -2,10 +2,10 @@ import SubHeader from './SubHeader'
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping, faUser, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-import DataConsumer from '../cart/DataContext';
+import { useCartStore } from '../../hooks/CartStore';
 
 const Header = () => {
-    const { data } = DataConsumer()
+    const products = useCartStore(state => state.products)
 
     return <header className='bg-[#211f43] text-white w-full z-50'>
         <div className="grid md:grid-cols-3 md:grid-rows-1 grid-cols-2 grid-rows-2 gap-4 p-4">
@@ -33,8 +33,8 @@ const Header = () => {
                 <div className="flex justify-center items-center flex-col">
                     <Link className="no-underline text-white" to="/cart">
                         <FontAwesomeIcon icon={faCartShopping} style={{ color: "#ffffff", width: "24px", height: "24px"}} />
-                        {data.length > 0 && <span className={'absolute inline-flex items-center px-2 py-1 rounded-full text-white text-sm bg-red-500'}>
-                            {data.length < 100 ? data.length : "99+"}
+                        {products.length > 0 && <span className={'absolute inline-flex items-center px-2 py-1 rounded-full text-white text-sm bg-red-500'}>
+                            {products.length < 100 ? products.length : "99+"}
                         </span>}
                     </Link>
                     <Link className="no-underline text-white" to="/cart">

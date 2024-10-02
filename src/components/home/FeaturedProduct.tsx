@@ -3,12 +3,24 @@ import { faCartPlus } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
 import * as Interfaces from '../../utils/interfaces'
 import { convertNumberToMoney } from '../../utils/functions'
-import { addCartProduct } from '../../utils/functions'
-import DataConsumer from '../cart/DataContext'
+import { useCartStore } from '../../hooks/CartStore'
+import { useShallow } from 'zustand/shallow'
+import { useState } from 'react'
 
 const FeaturedProduct = (product : Interfaces.FeaturedProduct) => {
     const { id, imageUrl, name, brand, category, subCategory, price, discount } = product
-    const { data, setData } = DataConsumer()
+    const [isProductInCart, setIsProductInCart] = useState<Boolean>(false)
+    const { addCartProduct, deleteCartProduct, existsProduct } = useCartStore(useShallow(state => ({ 
+        addCartProduct: state.addProduct,
+        deleteCartProduct: state.deleteProduct,
+        existsProduct: state.existsProduct
+    })))
+
+    const handleButton = () => {
+        setIsProductInCart(!existsProduct(id))
+        if (isProductInCart) deleteCartProduct(id)
+        else addCartProduct({...product})
+    }
 
     return (
         <div className="flex flex-col border p-4 rounded-lg shadow-md transform transition-transform duration-200 hover:scale-105">
@@ -23,9 +35,9 @@ const FeaturedProduct = (product : Interfaces.FeaturedProduct) => {
                 </p>
             </Link>
             <div className="py-4">
-                <button onClick={() => addCartProduct(data, setData, { ...product }, { quantity: 1, deliveryMethod: "Estandar" })} className="bg-[#3a3a7a] text-white font-semibold py-2 px-4 rounded-lg shadow hover:bg-[#211f43] transition duration-200 w-full">
+                <button onClick={handleButton} className="bg-[#3a3a7a] text-white font-semibold py-2 px-4 rounded-lg shadow hover:bg-[#211f43] transition duration-200 w-full">
                     <FontAwesomeIcon icon={faCartPlus} className="mr-2 text-xl" />
-                    Agregar al carrito
+                    {isProductInCart ? "Eliminar del carrito" : "Agregar al carrito"}
                 </button>
             </div>
         </div>
