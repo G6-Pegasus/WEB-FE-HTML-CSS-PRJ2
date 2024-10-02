@@ -1,5 +1,5 @@
 import Main from "../components/main/Main"
-import { convertNumberToMoney, deleteCartProduct, updateCartProduct } from "../utils/functions";
+import { convertNumberToMoney, deleteCartProduct, getSummary, updateCartProduct } from "../utils/functions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons"
 import DataConsumer from '../components/cart/DataContext';
@@ -10,11 +10,11 @@ const Cart = () => {
     const { data: products, setData } = DataConsumer();
 
     return <Main>
-        <aside className="px-4 pb-4 grid grid-rows-2 grid-cols-1 lg:grid-rows-1 lg:grid-cols-3 gap-4">
-            <section className="grid col-span-1 row-span-1 lg:col-start-1 lg:col-span-2 gap-4">
+        <aside className="px-4 pb-4 flex flex-col lg:grid lg:grid-rows-1 lg:grid-cols-3 gap-4">
+            <section className={`grid col-span-1 row-span-1 lg:col-start-1 lg:col-span-2 gap-4 ${products.length === 0 ? "hidden" : ""}`}>
                 {products.map((product) => {
                     const { id, name, quantity, brand, category, subCategory, imageUrl, price, discount, deliveryMethod } = product
-                    return <article key={id} className="w-full h-auto gap-5 flex items-center justify-evenly flex-col md:flex-row border rounded-lg p-5 md:p-2">
+                    return <article key={id} className="w-full h-auto gap-5 flex items-center justify-evenly flex-col md:flex-row border rounded-lg p-5 md:p-4">
                         <img className="w-3/4 md:w-40" src={imageUrl} alt={`${name} ${brand}`} />
                         <form onSubmit={e => {
                             e.preventDefault()
@@ -54,7 +54,28 @@ const Cart = () => {
                     </article>
                 })}
             </section>
-            <section className="grid col-auto row-auto lg:row-span-1 lg:col-start-3 lg:col-span-1"></section>
+            <section className="grid col-auto row-auto lg:row-span-1 lg:col-start-3 lg:col-span-1 p-5 h-fit border rounded-lg">
+                <h2 className="text-center font-bold text-3xl mb-5">Resumen de Compra</h2>
+                
+                <table>
+                    <tbody>
+                        {getSummary(products).map(([name, value], index) => name === "" ? (
+                            <tr key={index}>
+                                <td colSpan={3}>
+                                    <hr className="my-2" />
+                                </td>
+                            </tr>
+                        ) : (
+                            <tr key={index}>
+                                <td className="text-xl">{name}</td>
+                                <td className="text-xl text-end">{convertNumberToMoney(value)}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+                
+                <button className="border rounded-md p-1.5 mt-2 bg-[#211f43] text-white font-bold">Start Payment</button>
+            </section>
         </aside>
     </Main>
 }

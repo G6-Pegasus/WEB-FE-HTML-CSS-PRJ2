@@ -10,7 +10,7 @@ const Home = () => {
 
     return (
         <Main>
-            <div className="flex flex-col items-center ">
+            <div className="flex flex-col items-center">
                 {data_promotional_images.map(({ id, imageUrl, description }) => 
                     <PromotionalImage key={id} imageUrl={imageUrl} description={description} />)}
             </div>

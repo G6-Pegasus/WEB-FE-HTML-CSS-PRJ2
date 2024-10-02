@@ -40,3 +40,23 @@ export const deleteCartProduct = (products: CartProduct[], update: (data: CartPr
     if (!products.some(p => p.id === productId)) return;
     update(products.filter(p => p.id !== productId))
 }
+
+export function getSummary (products: CartProduct[]) : [string, number][] {
+    const deliveries = { "Estandar": 0.01, "Express": 0.05, "Overnight": 0.1 }
+    const subTotal = products.map(p => p.price * (p.quantity ?? 1)).reduce((a, b) => a + b, 0)
+    const envio = products.map(p => p.price * (p.quantity ?? 1) * deliveries[p.deliveryMethod ?? "Estandar"]).reduce((a, b) => a + b, 0)
+    const discount = products.map(p => p.price * (p.quantity ?? 1) * p.discount / 100).reduce((a, b) => a + b, 0)
+    const totalDiscount = subTotal + envio - discount
+    const iva = subTotal * 0.19
+    const total = totalDiscount + iva
+
+    return [
+        ["Subtotal", subTotal],
+        ["Envío", envio],
+        ["Descuentos", discount],
+        ["Total Descuentos", totalDiscount],
+        ["IVA", iva],
+        ["", 0],
+        ["Total", total]
+    ]
+}

@@ -4,6 +4,7 @@ import Product from "../components/plp/Product"
 import Filter from "../components/plp/Filter";
 import { useState, useEffect } from "react"
 import * as Interfaces from '../utils/interfaces'
+import Banner from "../components/home/Banner";
 
 type Params = {
     category: Interfaces.SubCategories,
@@ -66,9 +67,11 @@ const Plp = () => {
                     })}
                 </section>
 
-            </section>        
-        </section>
+            </section>
 
+        </section>
+        
+        <Banner bannerUrl="https://i.postimg.cc/hjVLLgrm/banner-plp.png"/>
     </Main>
 };
 

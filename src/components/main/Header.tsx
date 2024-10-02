@@ -34,7 +34,7 @@ const Header = () => {
                     <Link className="no-underline text-white" to="/cart">
                         <FontAwesomeIcon icon={faCartShopping} style={{ color: "#ffffff", width: "24px", height: "24px"}} />
                         {data.length > 0 && <span className={'absolute inline-flex items-center px-2 py-1 rounded-full text-white text-sm bg-red-500'}>
-                            {data.length}
+                            {data.length < 100 ? data.length : "99+"}
                         </span>}
                     </Link>
                     <Link className="no-underline text-white" to="/cart">
