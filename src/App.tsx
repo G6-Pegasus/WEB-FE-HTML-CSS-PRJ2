@@ -3,8 +3,8 @@ import Plp from './pages/Plp';
 import Pdp from './pages/Pdp';
 import Cart from './pages/Cart';
 import {
-  createBrowserRouter,
-  RouterProvider,
+    createBrowserRouter,
+    RouterProvider,
 } from "react-router-dom";
 
 const router = createBrowserRouter([
@@ -30,6 +30,6 @@ const router = createBrowserRouter([
   }
 ], /*{ basename: "/WEB-FE-HTML-CSS-PRJ2" } */ );
 
-const App = () => <RouterProvider router={router} />
-
-export default App;
+export default function App() {
+    return <RouterProvider router={router} />
+}
