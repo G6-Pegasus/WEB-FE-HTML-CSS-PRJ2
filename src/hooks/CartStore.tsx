@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { CartProduct, deliveryOptions, deliveryOptionsArr } from '../../utils/interfaces'
+import { CartProduct, deliveryOptions, deliveryOptionsArr } from '../utils/interfaces'
 
 interface CartProducts {
     products: CartProduct[],

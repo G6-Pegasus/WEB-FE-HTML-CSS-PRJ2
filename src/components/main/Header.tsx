@@ -2,7 +2,7 @@ import SubHeader from './SubHeader'
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping, faUser, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-import { useCartStore } from '../cart/CartStore';
+import { useCartStore } from '../../hooks/CartStore';
 
 const Header = () => {
     const products = useCartStore(state => state.products)

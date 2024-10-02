@@ -3,7 +3,7 @@ import { faCartPlus } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
 import * as Interfaces from '../../utils/interfaces'
 import { convertNumberToMoney } from '../../utils/functions'
-import { useCartStore } from '../cart/CartStore'
+import { useCartStore } from '../../hooks/CartStore'
 import { useShallow } from 'zustand/shallow'
 import { useState } from 'react'
 
