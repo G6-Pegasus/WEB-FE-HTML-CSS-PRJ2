@@ -6,16 +6,7 @@ import * as Interfaces from '../utils/interfaces'
 
 const Home = () => {
     const data_promotional_images: Interfaces.PromotionalImage[] = []
-    const featuredProducts: Interfaces.FeaturedProduct[] = [
-        {
-            id: 1,
-            imageUrl: "",
-            name: "producto",
-            brand: "1",
-            price: 10000,
-            discount: 40
-        }
-    ]
+    const featuredProducts: Interfaces.FeaturedProduct[] = []
 
     return (
         <Main>
