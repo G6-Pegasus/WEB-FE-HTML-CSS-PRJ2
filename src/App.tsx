@@ -8,22 +8,26 @@ import {
 } from "react-router-dom";
 
 const router = createBrowserRouter([
-    {
-        path: "/",
-        element: <Home />,
-    },
-    {
-        path: "/:category/:subCategory?",
-        element: <Plp />,
-    },
-    {
-        path: "/:category/:subCategory/:productId",
-        element: <Pdp />,
-    },
-    {
-        path: "/cart",
-        element: <Cart />
-    }
+  {
+    path: "/",
+    element: <Home />,
+  },
+  {
+    path: "/:category/:subCategory?",
+    element: <Plp />,
+  },
+  {
+    path: "/:category/:subCategory/:productId",
+    element: <Pdp />,
+  },
+  {
+    path: "/cart",
+    element: <Cart />
+  },
+  {
+    path: "/carrito",
+    element: <Cart />
+  }
 ], /*{ basename: "/WEB-FE-HTML-CSS-PRJ2" } */ );
 
 export default function App() {
