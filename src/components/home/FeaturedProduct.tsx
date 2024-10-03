@@ -21,10 +21,10 @@ const FeaturedProduct: React.FC<FeaturedProductProps> = ({ product, formattedPri
                 <img src={product.imageUrl} alt={product.name} className="w-full h-auto object-cover" />
                 <h2 className="text-lg font-bold text-[#211f43] pb-4 grow">{product.name}</h2>
                 <p className="text-[#888]">
-                    <span className="line-through">${formattedPrice}</span>
+                    <span className="line-through">{formattedPrice}</span>
                 </p>
                 <p className="text-[#2b8603] text-2xl font-bold">
-                    ${formattedDiscountPrice} <span className="text-[#888] text-base">({product.discount}%)</span>
+                    {formattedDiscountPrice} <span className="text-[#888] text-base">({product.discount}%)</span>
                 </p>
             </Link>
             <div className="py-4">

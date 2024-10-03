@@ -1,5 +1,6 @@
 import Home from './pages/Home';
 import Plp from './pages/Plp';
+import Pdp from './pages/pdp';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
   {
     path: "/:category/:subCategory?",
     element: <Plp />,
+  },
+  {
+    path: "/Pdp",
+    element: <Pdp />
   }
 ], { basename: "/WEB-FE-HTML-CSS-PRJ2" });
 
