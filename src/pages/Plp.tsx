@@ -36,7 +36,7 @@ const Plp = () => {
                     {isLoadingFilters ? (
                         <Spinner />
                     ) : filtersError ? (
-                        <Error message="Error cargando filtros" />
+                        <Error message="No se pudo cargar los filtros." />
                     ) : filters && filters.length > 0 ? (
                         filters.map((filter: Interfaces.Filter, index: number) => (
                             <Filter key={index} name={filter.name} items={filter.items} />

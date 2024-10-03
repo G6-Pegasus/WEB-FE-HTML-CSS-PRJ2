@@ -19,8 +19,8 @@ const Ymbi: React.FC = () => {
                     ))}
                 </section>
             ) : isError ? (
-                <div className="my-10">
-                    <Error message="Hubo un error al cargar los productos relacionados." />
+                <div className="my-10 w-1/2 mx-auto text-center">
+                    <Error message="No se pudo cargar los productos relacionados." />
                 </div>
             ) : !relatedProducts || relatedProducts.length === 0 ? (
                 <p>No hay productos relacionados disponibles.</p>
