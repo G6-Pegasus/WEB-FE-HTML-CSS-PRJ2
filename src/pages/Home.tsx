@@ -5,15 +5,19 @@ import Banner from '../components/home/Banner'
 import PromotionalImage from "../components/home/PromotionalImage"
 
 import React from 'react';
+//import ReactDOM from 'react-dom';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 
+const queryClient = new QueryClient()
 const Home: React.FC = () => {
     return (
         <Main>
+            <QueryClientProvider client={queryClient}>
             <div className="flex flex-col items-center ">
             <PromotionalImage />
             </div>
-
+            </QueryClientProvider>
             <h1 className="text-[#211f43] text-center pt-6 font-bold text-2xl">Productos Destacados</h1>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6 px-8 py-6 mb-5">
                 {featuredProducts.map((product, index) => {
