@@ -3,7 +3,8 @@ import Product from "../components/plp/Product";
 import { Link, useParams } from "react-router-dom";
 import Main from "../components/main/Main";
 import Filter from "../components/plp/Filter";
-import * as Interfaces from '../utils/plp/interfaces';
+import { useState, useEffect } from "react"
+import * as Interfaces from '../utils/interfaces'
 import Banner from "../components/home/Banner";
 import { useFilters } from '../hooks/useFiltersData';
 import { get_plp_data } from "../utils/plp/plp_data";
@@ -46,6 +47,7 @@ const Plp = () => {
                     )}
                 </aside>
                 <section className="md:w-3/4 flex flex-col gap-5 mx-4 md:mx-0 md:mb-4">
+                
                     {/* ----------------------------- TITLE ------------------------------ */}
                     <section className="flex flex-col sm:flex-row justify-between sm:items-center">
                         <h3 className="text-lg font-bold text-[#211f43]">{products.length} resultados de {products.length}</h3>
@@ -53,25 +55,30 @@ const Plp = () => {
                             <label htmlFor="Orderby-plp" className="mr-2">Ordenar por:</label>
                             <select name="options" id="Orderby-plp" className="border border-gray-300 rounded-md p-1">
                                 {[
-                                    "Relevancia", "Fecha de carga",
+                                    "Relevancia", "Fecha de carga", 
                                     "Precio menor a mayor", "Precio mayor a menor"
                                 ].map((value, index) => <option key={index} value={value}>{value}</option>)}
                             </select>
                         </section>
                     </section>
+
                     {/* --------------------- LIST OF PRODUCTS ---------------------- */}
                     <section className="grid gap-4">
-                        {products.map((product, index) => {
-                            const { imageUrl, name, brand, starts, reviews, price, discount } = product;
-                            return <Link key={index} className="Block" to="#">
-                                <Product imageUrl={imageUrl} name={name} brand={brand} starts={starts}
+                        {products.map(({ id, imageUrl, name, brand, category, subCategory, starts, reviews, price, discount }, index) => {
+                            const url = `/${category}/${subCategory}/${id}`
+
+                            return <Link key={index} className="Block" to={url}>
+                                <Product imageUrl={imageUrl} name={name} brand={brand} starts={starts} 
                                     reviews={reviews} price={price} discount={discount} />
                             </Link>
                         })}
                     </section>
+
                 </section>
+
             </section>
-            <Banner bannerUrl="https://i.postimg.cc/hjVLLgrm/banner-plp.png" />
+        
+            <Banner bannerUrl="https://i.postimg.cc/hjVLLgrm/banner-plp.png"/>
         </Main>
     );
 };
