@@ -26,7 +26,7 @@ const Product = ({ imageUrl, name, brand, starts, reviews, price, discount }: In
                 </h6>
                 <p className="text-xs">({reviews} reseñas)</p>
                 {discount > 0 && <del className="text-gray-400 text-sm">{convertNumberToMoney(price)}</del>}
-                <b className="text-[#2b8603] text-base ">
+                <b className="text-[#2b8603] text-base">
                     {convertNumberToMoney(price * (1 - discount / 100))} 
                     {discount > 0 && <span> (-{Math.round(discount)}%)</span>}
                 </b>
