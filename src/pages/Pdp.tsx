@@ -1,6 +1,10 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
+import {useFeaturedProducts} from '../hooks/usePdpData';
 
 const Pdp: React.FC = () => {
+  const { category, subCategory, productId } = useParams(); //Obtiene los parámetros de la URL
+  
   const product = {
     image: 'url-de-la-imagen-del-producto',
     description: 'Una breve descripción del producto.',
@@ -18,14 +22,40 @@ const Pdp: React.FC = () => {
     { id: 4, image: 'url-imagen4', name: 'Producto 4' },
   ];
 
+  const { data: products, isLoading, isError } = useFeaturedProducts(category || "" , subCategory || "", productId || "");
+
+  const priceDiscount = Number(
+    ((products?.price ?? 0) - (products?.price ?? 0) * (products?.discount ?? 0) / 100).toFixed(2));  
+
   return (
     <div className="container mx-auto p-6">
       <div className="flex flex-col lg:flex-row items-start mb-8">
         <div className="lg:w-1/2 mb-6 lg:mb-0">
-          <img src={product.image} alt="Producto" className="w-full object-cover" />
-        </div>
-        <div className="lg:w-1/2 lg:pl-6">
-          <p className="text-lg font-semibold mb-4">{product.description}</p>
+          {
+            isLoading && (
+              <p>Insertar Spinner</p>
+            )
+          }
+          {
+            isError && (
+              <p>Insertar componente error</p>
+            )
+          }
+          {!isLoading && !isError && (
+              <div>
+                <div>
+                  <img src={products.imageUrl} alt="Producto" className="w-full object-cover" />
+                </div>
+                <div className="lg:w-1/2 lg:pl-6">
+                  <h1>{products.name}</h1>
+                  <p>{products.price}</p>
+                  <p>{products.discount}</p>
+                  <p>{priceDiscount}</p>
+                  <p className="text-lg font-semibold mb-4 text-black">{products.description}</p>
+                </div>
+              </div>
+            )
+          }
         </div>
       </div>
       <div className="mb-8">
