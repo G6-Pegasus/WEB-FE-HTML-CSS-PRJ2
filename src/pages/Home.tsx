@@ -1,7 +1,7 @@
 import Main from "../components/main/Main"
 import FeaturedProduct from "../components/home/FeaturedProduct"
 import Banner from '../components/home/Banner'
-import PromotionalImage from "../components/home/PromotionalImage"
+import PromotionalImages from "../components/data/PromotionalImages"
 import * as Interfaces from '../utils/interfaces'
 import { useFeaturedProducts } from "../hooks/useFeaturedProductsData"
 
@@ -32,9 +32,8 @@ const Home = () => {
 
     return (
         <Main>
-            <div className="flex flex-col items-center ">
-                {data_promotional_images.map(({ id, imageUrl, description }) => 
-                    <PromotionalImage key={id} imageUrl={imageUrl} description={description} />)}
+            <div className="flex flex-col items-center">
+                <PromotionalImages />
             </div>
 
             <h1 className="text-[#211f43] text-center pt-6 font-bold text-2xl">Productos Destacados</h1>
