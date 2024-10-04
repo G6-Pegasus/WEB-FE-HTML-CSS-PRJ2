@@ -5,22 +5,21 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
 
 const Pdp: React.FC = () => {
-  const { category, subCategory, productId } = useParams();
+  const { category, subCategory, productId } = useParams()
 
-  const { data: products, isLoading, isError } = useFeaturedProducts(category || "", subCategory || "", productId || "");
+  const { data: products, isLoading, isError } = useFeaturedProducts(category || "", subCategory || "", productId || "")
   const normalPrice = products ? Math.floor(products.price) : 0;
-  const discountPrice = products ? Math.floor(normalPrice * (1 - products.discount / 100)) : 0;
+  const discountPrice = products ? Math.floor(normalPrice * (1 - products.discount / 100)) : 0
 
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState(1)
   const incrementQuantity = () => {
-    setQuantity(quantity + 1);
-  };
-
+    setQuantity(quantity + 1)
+  }
   const decrementQuantity = () => {
     if (quantity > 1) {
-      setQuantity(quantity - 1);
+      setQuantity(quantity - 1)
     }
-  };
+  }
 
   return (
     <div className="grid grid-rows-4 gap-4 mb-8">
@@ -74,8 +73,7 @@ const Pdp: React.FC = () => {
         <h3 className="text-xl font-semibold mb-4">Te podría interesar</h3>
       </div>
     </div>
-  );
-};
+  )
+}
 
 export default Pdp;
-
