@@ -1,15 +1,13 @@
-import { useState, useEffect } from "react";
 import Product from "../components/plp/Product";
 import { Link, useParams } from "react-router-dom";
 import Main from "../components/main/Main";
 import Filter from "../components/plp/Filter";
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import * as Interfaces from '../utils/interfaces'
 import Banner from "../components/home/Banner";
 import { useFilters } from '../hooks/useFiltersData';
-import { get_plp_data } from "../utils/plp/plp_data";
-import Spinner from "../components/common/spinner";
-import Error from "../components/common/error";
+import Spinner from "../components/common/Spinner";
+import Error from "../components/common/Error";
 
 type Params = {
     category: Interfaces.SubCategories,
@@ -18,16 +16,8 @@ type Params = {
 
 const Plp = () => {
     const { category = "", subCategory = "" } = useParams<Params>();
-    const [products, setProducts] = useState<Interfaces.Product[]>([]);
+    const [products, _] = useState<Interfaces.Product[]>([]);
     const { data: filters, isLoading: isLoadingFilters, error: filtersError } = useFilters(category as string, subCategory as string);
-
-    useEffect(() => {
-        const getData = async () => {
-            const { data_plp_products } = await get_plp_data(subCategory ?? (category == "Celulares" ? "Celularesc" : category));
-            setProducts(data_plp_products);
-        };
-        getData();
-    }, [category, subCategory]);
 
     return (
         <Main>

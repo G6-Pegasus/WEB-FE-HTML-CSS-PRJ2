@@ -4,11 +4,6 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 
-// React
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-
 // React-router and tailwind
 import App from './App.tsx';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';

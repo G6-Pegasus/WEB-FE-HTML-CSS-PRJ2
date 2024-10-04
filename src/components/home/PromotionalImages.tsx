@@ -1,5 +1,5 @@
 import { usePromotionalImage } from '../../hooks/usePromotionalImage';
-import PromotionalImage from '../home/PromotionalImage';
+import PromotionalImage from './PromotionalImage';
 import * as Interfaces from '../../utils/interfaces'
 import Spinner from '../common/Spinner';
 import Error from '../common/Error'
@@ -12,7 +12,7 @@ const PromotionalImages: React.FC = () => {
 
   return (
     <>
-      {images.map(({id, imageUrl, description} : Interfaces.PromotionalImage) => <PromotionalImage key={id} imageUrl={imageUrl} description={description} />)}
+      {images?.map(({id, imageUrl, description} : Interfaces.PromotionalImage) => <PromotionalImage key={id} imageUrl={imageUrl} description={description} />)}
     </>
   );
 };

@@ -3,7 +3,7 @@ import { CartProduct, deliveryOptions, deliveryOptionsArr } from '../utils/inter
 
 interface CartProducts {
     products: CartProduct[],
-    addProduct: (product: CartProduct) => void,
+    addProduct: (product: CartProduct, quantity : number) => void,
     updateProduct: (productId : number | undefined, values: { quantity: number, deliveryMethod: deliveryOptions }) => void,
     deleteProduct: (productId : number | undefined) => void,
     existsProduct: (productId: number | undefined) => boolean,
@@ -12,10 +12,10 @@ interface CartProducts {
 
 export const useCartStore = create<CartProducts> ((set, get) => ({
     products: JSON.parse(localStorage.getItem("cartProducts") || "[]"),
-    addProduct: (product: CartProduct) => {
+    addProduct: (product: CartProduct, quantity : number) => {
         const productsStore = get().products
         if (productsStore.some(p => p.id === product.id)) return;
-        set(state => ({ ...state, products: [...productsStore, {...product, ...{ quantity: 1, deliveryMethod: deliveryOptionsArr[0] }}]}))
+        set(state => ({ ...state, products: [...productsStore, {...product, ...{ quantity: quantity, deliveryMethod: deliveryOptionsArr[0] }}]}))
         localStorage.setItem("cartProducts", JSON.stringify(get().products))
     },
     updateProduct: (productId : number | undefined, values: { quantity: number, deliveryMethod: deliveryOptions }) => {

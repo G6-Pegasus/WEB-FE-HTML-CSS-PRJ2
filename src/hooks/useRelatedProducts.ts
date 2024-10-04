@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
-import { fetchRelatedProducts } from '../services/RelatedProductsServices';
-import { Product } from '../utils/plp/interfaces';
+import { fetchRelatedProducts } from '../services/relatedProductsService';
+import { Product } from '../utils/interfaces';
 
 export const useRelatedProducts = (productId: number) => {
     return useQuery<Product[], Error>({
