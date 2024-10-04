@@ -31,13 +31,13 @@ const Header = () => {
 
             <div className="flex justify-end items-center font-montserrat text-[14px] text-center gap-4 col-span-1 row-span-1 md:col-span-1md:row-span-1 order-2 md:order-3 p-2">
                 <div className="flex justify-center items-center flex-col">
-                    <Link className="no-underline text-white" to="/cart">
+                    <Link className="no-underline text-white" to="/carrito">
                         <FontAwesomeIcon icon={faCartShopping} style={{ color: "#ffffff", width: "24px", height: "24px"}} />
                         {products.length > 0 && <span className={'absolute inline-flex items-center px-2 py-1 rounded-full text-white text-sm bg-red-500'}>
                             {products.length < 100 ? products.length : "99+"}
                         </span>}
                     </Link>
-                    <Link className="no-underline text-white" to="/cart">
+                    <Link className="no-underline text-white" to="/carrito">
                         <span className="header-user_section-area-text">
                             Carrito
                         </span>

@@ -7,7 +7,7 @@ import { useCartStore } from '../../hooks/useCartStore'
 import { useShallow } from 'zustand/shallow'
 import { useState } from 'react'
 
-const FeaturedProduct = (product : Interfaces.FeaturedProduct) => {
+const FeaturedProduct = ( product : Interfaces.FeaturedProduct) => {
     const { id, imageUrl, name, brand, category, subCategory, price, discount } = product
     const [isProductInCart, setIsProductInCart] = useState<Boolean>(false)
     const { addCartProduct, deleteCartProduct, existsProduct } = useCartStore(useShallow(state => ({ 
@@ -19,7 +19,7 @@ const FeaturedProduct = (product : Interfaces.FeaturedProduct) => {
     const handleButton = () => {
         setIsProductInCart(!existsProduct(id))
         if (isProductInCart) deleteCartProduct(id)
-        else addCartProduct({...product})
+        else addCartProduct({...product}, 1)
     }
 
     return (
