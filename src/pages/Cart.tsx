@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons"
 import { Link } from "react-router-dom";
 import { deliveryOptionsArr } from "../utils/interfaces";
-import { useCartStore } from "../hooks/CartStore";
+import { useCartStore } from "../hooks/useCartStore";
 import { useShallow } from "zustand/shallow";
 
 const Cart = () => {

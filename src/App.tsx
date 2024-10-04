@@ -21,10 +21,6 @@ const router = createBrowserRouter([
     element: <Pdp />,
   },
   {
-    path: "/cart",
-    element: <Cart />
-  },
-  {
     path: "/carrito",
     element: <Cart />
   }

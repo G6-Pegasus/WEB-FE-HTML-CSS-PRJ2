@@ -1,10 +1,9 @@
 import Main from "../components/main/Main"
 import FeaturedProduct from "../components/home/FeaturedProduct"
 import Banner from '../components/home/Banner'
-import PromotionalImage from "../components/home/PromotionalImage"
+import PromotionalImages from "../components/data/PromotionalImages"
 import * as Interfaces from '../utils/interfaces'
 import { useFeaturedProducts } from "../hooks/useFeaturedProductsData"
-import { Key } from "react"
 
 
 interface Product {
@@ -34,8 +33,7 @@ const Home = () => {
     return (
         <Main>
             <div className="flex flex-col items-center">
-                {data_promotional_images.map(({ id, imageUrl, description }) => 
-                    <PromotionalImage key={id} imageUrl={imageUrl} description={description} />)}
+                <PromotionalImages />
             </div>
 
             <h1 className="text-[#211f43] text-center pt-6 font-bold text-2xl">Productos Destacados</h1>
@@ -49,14 +47,14 @@ const Home = () => {
                 )}
 
                 {!isLoading && !isError && (
-                    products.map(({id, imageUrl, name, brand, category, subCategory, price, discount }: any, index: Key | null | undefined) => {
+                    products.map(({id, imageUrl, name, category, subCategory, price, discount }, index) => {
                         return (
                             <FeaturedProduct
                                 key={index}
                                 id={id}
                                 imageUrl={imageUrl}
                                 name={name}
-                            brand={brand}
+                                brand={brand}
                                 category={category}
                                 subCategory={subCategory}
                                 price={price}
