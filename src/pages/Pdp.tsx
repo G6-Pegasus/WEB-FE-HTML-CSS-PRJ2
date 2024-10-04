@@ -5,66 +5,46 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
 
 const Pdp: React.FC = () => {
-  const { category, subCategory, productId } = useParams()
-  
-  const product = {
-    image: 'url-de-la-imagen-del-producto',
-    description: 'Una breve descripción del producto.',
-    specifications: {
-      'Peso': '1.5 kg',
-      'Dimensiones': '10 x 15 x 20 cm',
-      'Color': 'Negro',
-      'Material': 'Acero inoxidable',
-    },
-  }
+  const { category, subCategory, productId } = useParams();
 
-  const { data: products, isLoading, isError } = useFeaturedProducts(category || "", subCategory || "", productId || "")
-  const normalPrice = products ? Math.floor(products.price) : 0
-  const discountPrice = products ? Math.floor(normalPrice * (1 - products.discount / 100)) : 0
+  const { data: products, isLoading, isError } = useFeaturedProducts(category || "", subCategory || "", productId || "");
+  const normalPrice = products ? Math.floor(products.price) : 0;
+  const discountPrice = products ? Math.floor(normalPrice * (1 - products.discount / 100)) : 0;
 
-  const [quantity, setQuantity] = useState(1)
+  const [quantity, setQuantity] = useState(1);
   const incrementQuantity = () => {
-    setQuantity(quantity + 1)
-  }
+    setQuantity(quantity + 1);
+  };
 
   const decrementQuantity = () => {
     if (quantity > 1) {
-      setQuantity(quantity - 1)
+      setQuantity(quantity - 1);
     }
-  }
+  };
 
   return (
     <div className="grid grid-rows-4 gap-4 mb-8">
       <div className="w-full flex items-center">
-        {isLoading && 
-        (<p>Insertar Spinner</p>)}
-        {isError && 
-        (<p>Insertar componente error</p>)}
+        {isLoading && (<p>Insertar Spinner</p>)}
+        {isError && (<p>Insertar componente error</p>)}
         {!isLoading && !isError && products && (
           <div className="w-full mb-6">
-            <div className='grid grid-cols-5 gap-4 m-4 bg-white p-6 rounded-lg shadow-lg'>
-              <div className='item-self:center col-span-3 justify-center'>
+            <div className='grid grid-cols-1 lg:grid-cols-5 gap-4 m-4 bg-white p-6 rounded-lg shadow-lg'>
+              <div className='item-self:center col-span-1 lg:col-span-3 justify-center'>
                 <img src={products.imageUrl} alt="Producto" className="w-auto h-full" />
               </div>
-              <div className="col-span-2 lg:pl-6">
+              <div className="col-span-1 lg:col-span-2 lg:pl-6">
                 <h1 className='text-4xl font-semibold text-[#211f43]'>
                   {products.name}{products.brand}
                 </h1>
-                <p className='line-through text-[#999]'>
-                  ${normalPrice.toLocaleString()}
-                </p>
-                <p className='text-bold text-xl text-[#2b8603]'>
+                <p className='line-through text-[#999]'>${normalPrice.toLocaleString()}</p>
+                <p className='font-bold text-xl text-[#2b8603]'>
                   ${discountPrice.toLocaleString()} <span>({products.discount}%)</span>
                 </p>
-                <p className="text-lg font-semibold mb-4 text-black">
-                  {products.description}
-                </p>
+                <p className="text-lg font-semibold mb-4 text-[#211f43]">{products.description}</p>
                 <div className="flex items-center space-x-2">
                   <div className="flex items-center border border-gray-300 rounded-lg">
-                    <button
-                      onClick={decrementQuantity}
-                      className="px-2 py-1 bg-gray-100 rounded-l-lg hover:bg-gray-200"
-                    >
+                    <button onClick={decrementQuantity} className="px-2 py-1 bg-gray-100 rounded-l-lg hover:bg-gray-200">
                       -
                     </button>
                     <input
@@ -73,10 +53,7 @@ const Pdp: React.FC = () => {
                       readOnly
                       className="w-12 text-center border-x-0 focus:outline-none"
                     />
-                    <button
-                      onClick={incrementQuantity}
-                      className="px-2 py-1 bg-gray-100 rounded-r-lg hover:bg-gray-200"
-                    >
+                    <button onClick={incrementQuantity} className="px-2 py-1 bg-gray-100 rounded-r-lg hover:bg-gray-200">
                       +
                     </button>
                   </div>
@@ -92,16 +69,6 @@ const Pdp: React.FC = () => {
       </div>
       <div className="grid grid-rows-1 m-4">
         <h3 className="text-xl font-semibold">Especificaciones Técnicas</h3>
-        <table className="w-full">
-          <tbody>
-            {Object.entries(product.specifications).map(([key, value]) => (
-              <tr key={key} className="text-left">
-                <td className="font-semibold">{key}:</td>
-                <td className="pl-4">{value}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
       </div>
       <div className='m-4'>
         <h3 className="text-xl font-semibold mb-4">Te podría interesar</h3>
@@ -111,3 +78,4 @@ const Pdp: React.FC = () => {
 };
 
 export default Pdp;
+
