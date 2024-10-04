@@ -8,7 +8,7 @@ const Pdp: React.FC = () => {
   const { category, subCategory, productId } = useParams(); // Obtiene los parámetros de la URL
   
   
-  const { data: productInfo, isLoading: isLoadingInfo, isError: isErrorInfo } = PDPInfo(category || "", subCategory || "", productId || "");
+  const { data: productInfo } = PDPInfo(category || "", subCategory || "", productId || "");
 
   const relatedProducts = [
     { id: 1, image: 'url-imagen1', name: 'Producto 1' },
