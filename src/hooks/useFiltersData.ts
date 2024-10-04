@@ -1,7 +1,7 @@
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, UseQueryResult } from '@tanstack/react-query';
 import { fetchFilters } from '../services/filtersService.ts';
+import { Filter } from '../utils/interfaces.ts';
 
-// este componente usa el hook useQuery de react-query para hacer una petición a la API de filtros
-export const useFilters = (category: string, subCategory: string) => {
+export const useFilters = (category: string, subCategory: string) : UseQueryResult<Filter[], Error> => {
     return useQuery({ queryKey: ['filters', category, subCategory], queryFn: () => fetchFilters(category, subCategory) });
 };
