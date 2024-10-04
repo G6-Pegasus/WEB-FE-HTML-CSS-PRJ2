@@ -4,6 +4,7 @@ import Banner from '../components/home/Banner'
 import PromotionalImage from "../components/home/PromotionalImage"
 import * as Interfaces from '../utils/interfaces'
 import { useFeaturedProducts } from "../hooks/useFeaturedProductsData"
+import { Key } from "react"
 
 
 interface Product {
@@ -48,7 +49,7 @@ const Home = () => {
                 )}
 
                 {!isLoading && !isError && (
-                    products.map(({id, imageUrl, name, brand, category, subCategory, price, discount }, index) => {
+                    products.map(({id, imageUrl, name, brand, category, subCategory, price, discount }: any, index: Key | null | undefined) => {
                         return (
                             <FeaturedProduct
                                 key={index}
