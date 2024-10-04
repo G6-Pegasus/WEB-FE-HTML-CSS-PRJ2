@@ -48,3 +48,7 @@ export interface PromotionalImage {
     imageUrl: string,
     description: string
 }
+
+export type ProductInfo = {
+    [key: string]: string;
+  };

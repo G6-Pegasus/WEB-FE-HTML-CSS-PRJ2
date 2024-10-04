@@ -3,11 +3,13 @@ import { useParams } from 'react-router-dom';
 import { useFeaturedProducts } from '../hooks/usePdpData';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
+import { PDPInfo}  from '../hooks/usePdpInfo';
 
 const Pdp: React.FC = () => {
   const { category, subCategory, productId } = useParams()
 
   const { data: products, isLoading, isError } = useFeaturedProducts(category || "", subCategory || "", productId || "")
+  const { data: productInfo } = PDPInfo(category || "", subCategory || "", productId || "");
   const normalPrice = products ? Math.floor(products.price) : 0;
   const discountPrice = products ? Math.floor(normalPrice * (1 - products.discount / 100)) : 0
 
@@ -66,12 +68,44 @@ const Pdp: React.FC = () => {
           </div>
         )}
       </div>
-      <div className="grid grid-rows-1 m-4">
-        <h3 className="text-xl font-semibold">Especificaciones Técnicas</h3>
-      </div>
-      <div className='m-4'>
-        <h3 className="text-xl font-semibold mb-4">Te podría interesar</h3>
-      </div>
+      <div className="mb-8">
+      <table className="w-1/2 border-t border-b border-gray-400">
+        <thead>
+          <tr>
+            <th colSpan={3} className="text-center py-2 font-bold text-gray-700">
+              Especificaciones Técnicas
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+
+                { productInfo?.map((spec: string, index: number) => {
+      const [key, value] = spec.split(':').map(part => part.trim());
+
+      return (
+        <tr key={index} className="border-t border-gray-300">
+              <td className="font-semibold py-2">{key}:</td>
+              <td className="pl-4 py-2 text-right ">{`${key}: ${value}`}</td>
+        </tr>
+      );
+    })}
+
+        </tbody>
+
+      </table>
+    </div>
+          <div>
+            <h3 className="text-xl font-semibold mb-4">Te podría interesar</h3>
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+              {relatedProducts.map((product) => (
+                <div key={product.id} className="border rounded-lg p-4">
+                  <img src={product.image} alt={product.name} className="w-full h-48 object-cover mb-4" />
+                  <p className="text-center">{product.name}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
     </div>
   )
 }

@@ -54,6 +54,7 @@ const Home = () => {
                                 id={id}
                                 imageUrl={imageUrl}
                                 name={name}
+                                brand={brand}
                                 category={category}
                                 subCategory={subCategory}
                                 price={price}
