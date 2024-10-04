@@ -1,9 +1,10 @@
 import Home from './pages/Home';
 import Plp from './pages/Plp';
-import Pdp from './pages/pdp';
+import Pdp from './pages/Pdp';
+import Cart from './pages/Cart';
 import {
-  createBrowserRouter,
-  RouterProvider,
+    createBrowserRouter,
+    RouterProvider,
 } from "react-router-dom";
 
 const router = createBrowserRouter([
@@ -16,11 +17,15 @@ const router = createBrowserRouter([
     element: <Plp />,
   },
   {
-    path: "/Pdp",
-    element: <Pdp />
+    path: "/:category/:subCategory/:productId",
+    element: <Pdp />,
+  },
+  {
+    path: "/carrito",
+    element: <Cart />
   }
-], { basename: "/WEB-FE-HTML-CSS-PRJ2" });
+], /*{ basename: "/WEB-FE-HTML-CSS-PRJ2" } */ );
 
-const App = () => <RouterProvider router={router} />
-
-export default App;
+export default function App() {
+    return <RouterProvider router={router} />
+}
