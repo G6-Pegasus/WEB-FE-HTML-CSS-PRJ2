@@ -21,6 +21,7 @@ export interface Product extends FeaturedProduct {
     starts: number;
     reviews: number;
     description?: string;
+    loadDate?: string;
     info?: { [key: string]: string }
 }
 

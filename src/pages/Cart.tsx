@@ -6,6 +6,9 @@ import { Link } from "react-router-dom";
 import { deliveryOptionsArr } from "../utils/interfaces";
 import { useCartStore } from "../hooks/useCartStore";
 import { useShallow } from "zustand/shallow";
+import { useState } from "react";
+
+const PRODUCTS_PER_PAGE: number = 3;
 
 const Cart = () => {
     const { products, updateCartProduct, deleteCartProduct, getSummary } = useCartStore(useShallow(state => ({
@@ -14,11 +17,15 @@ const Cart = () => {
         deleteCartProduct: state.deleteProduct,
         getSummary: state.getSummary
     })))
+    const [currentPage, setCurrentPage] = useState<number>(1);
+    const totalPages = Math.ceil((products?.length ?? 0) / PRODUCTS_PER_PAGE)
+    const handleNextPage = () => setCurrentPage(currentPage < totalPages ? currentPage + 1 : currentPage);
+    const handlePreviousPage = () => setCurrentPage(currentPage > 1 ? currentPage - 1 : currentPage);
 
     return <Main>
         <aside className="px-4 pb-4 flex flex-col lg:grid lg:grid-rows-1 lg:grid-cols-3 gap-4">
             <section className={`grid col-span-1 row-span-1 lg:col-start-1 lg:col-span-2 gap-4 ${products.length === 0 ? "hidden" : ""}`}>
-                {products.map((product) => {
+                {products.slice((currentPage - 1) * PRODUCTS_PER_PAGE, currentPage * PRODUCTS_PER_PAGE).map((product) => {
                     const { id, name, quantity, brand, category, subCategory, imageUrl, price, discount, deliveryMethod } = product
                     return <article key={id} className="w-full h-auto gap-5 flex items-center justify-evenly flex-col md:flex-row border rounded-lg p-5 md:p-4">
                         <img className="w-3/4 md:w-40" src={imageUrl} alt={`${name} ${brand}`} />
@@ -59,6 +66,31 @@ const Cart = () => {
                         </form>
                     </article>
                 })}
+                <div className="flex items-center justify-between mb-5">
+                    <button
+                        onClick={handlePreviousPage}
+                        disabled={currentPage === 1}
+                        className={`px-4 py-2 rounded bg-[#3a3a7a] text-white hover:opacity-70 ${
+                        currentPage === 1 ? 'opacity-50 cursor-not-allowed' : ''
+                        }`}
+                    >
+                        Anterior
+                    </button>
+
+                    <span className="text-gray-700">
+                        Página {currentPage} de {totalPages}
+                    </span>
+
+                    <button
+                        onClick={handleNextPage}
+                        disabled={currentPage === totalPages}
+                        className={`px-4 py-2 rounded bg-[#3a3a7a] text-white hover:opacity-70 ${
+                        currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : ''
+                        }`}
+                    >
+                        Siguiente
+                    </button>
+                </div>
             </section>
             <section className="grid col-auto row-auto lg:row-span-1 lg:col-start-3 lg:col-span-1 p-5 h-fit border rounded-lg">
                 <h2 className="text-center font-bold text-3xl mb-5">Resumen de Compra</h2>
