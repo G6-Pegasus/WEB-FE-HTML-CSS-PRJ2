@@ -28,6 +28,7 @@ const Pdp: React.FC = () => {
         setIsProductInCart(!existsProduct(productPDP?.id))
         if (isProductInCart) deleteCartProduct(productPDP?.id)
         else addCartProduct({
+            id: productPDP?.id ?? 0,
             imageUrl: productPDP?.imageUrl ?? "",
             name: productPDP?.name ?? "",
             brand: productPDP?.brand ?? "",

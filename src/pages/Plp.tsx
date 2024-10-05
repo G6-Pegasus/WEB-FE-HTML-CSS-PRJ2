@@ -20,6 +20,10 @@ const Plp = () => {
     const { data: products, isLoading: isLoadingProducts, error: productsError } = useProducts(category, subCategory)
     const { data: filters, isLoading: isLoadingFilters, error: filtersError } = useFilters(category, subCategory);
 
+    const sortProducts = () => {
+        console.log("Aqui")
+    }
+
     return (
         <Main>
             <section className="flex flex-col md:flex-row gap-5">
@@ -44,7 +48,7 @@ const Plp = () => {
                         <h3 className="text-lg font-bold text-[#211f43]">{products?.length ?? 0} resultados de {products?.length ?? 0}</h3>
                         <section className="flex items-center">
                             <label htmlFor="Orderby-plp" className="mr-2">Ordenar por:</label>
-                            <select name="options" id="Orderby-plp" className="border border-gray-300 rounded-md p-1">
+                            <select onChange={sortProducts} name="options" id="Orderby-plp" className="border border-gray-300 rounded-md p-1">
                                 {[
                                     "Relevancia", "Fecha de carga", 
                                     "Precio menor a mayor", "Precio mayor a menor"
